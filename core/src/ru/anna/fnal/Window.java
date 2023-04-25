@@ -45,4 +45,4 @@ public class Window {
     BufferedImage stage;
     BufferedImage currentView;
 }
-}
+
