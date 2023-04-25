@@ -11,4 +11,21 @@ public class Foxy {
     private void foxy(int difficulty) {
         this.difficulty = difficulty;
     }
+    public static void tick() {
+        if (!Office.monitorUp || Window.cameraLocation != "Pirate Cove") {
+            if (stage != 3) {
+                ++stage;
+            } else if (!Office.door1open) {
+                stage = 1;
+                Window.knock.play();
+            } else {
+                playerDeath = true;
+            }
+
+        }
+    }
+
+    static int getStage() {
+        return stage;
+    }
 }
