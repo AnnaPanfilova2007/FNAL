@@ -1,17 +1,23 @@
 package ru.anna.fnal;
 
-import com.badlogic.gdx.ApplicationAdapter;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.utils.ScreenUtils;
-
+import java.awt.Dimension;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
 import javax.swing.JFrame;
 
-public class Main extends ApplicationAdapter implements Runnable, MouseListener, MouseMotionListener {
+import ru.anna.fnal.Bonnie;
+import ru.anna.fnal.Chicka;
+import ru.anna.fnal.Foxy;
+import ru.anna.fnal.Freddy;
+import ru.anna.fnal.Office;
+import ru.anna.fnal.Window;
+
+public class Main implements Runnable, MouseListener, MouseMotionListener {
+
 	public static int limit = 200;
 	public static int timer = 3000;
 	public static boolean isReversed = false;
@@ -52,23 +58,22 @@ public class Main extends ApplicationAdapter implements Runnable, MouseListener,
 		thread.start();
 	}
 
+	@Override
 	public void run() {
-		while(true) {
+		while (true) {
 			try {
-				Thread.sleep(10L);
-				if (death) {
+				//Thread.sleep(10);
+				if (death == true) {
 					Window.needStatic = true;
 					if (deathTimer < 1000) {
-						++deathTimer;
+						deathTimer++;
 					}
-
 					if (deathTimer > 0 && deathTimer < 200) {
 						Window.needStatic = true;
 					} else {
 						Window.needStatic = false;
 						deather = true;
 					}
-
 					if (deathTimer == 1000) {
 						death = false;
 						Window.startGame = false;
@@ -100,6 +105,7 @@ public class Main extends ApplicationAdapter implements Runnable, MouseListener,
 						gameTimer = 0;
 						gameWin = false;
 						gameWinTimer = 0;
+
 						Window.needToMove = true;
 						Window.needStatic = false;
 						Window.Static = 1;
@@ -113,38 +119,39 @@ public class Main extends ApplicationAdapter implements Runnable, MouseListener,
 						Window.freddie = 1;
 						Window.chicka = 1;
 						Window.powerOut = 1;
+
 						Bonnie.inRoom = 0;
 						Bonnie.playerdeath = false;
+
 						Chicka.inRoom = 0;
 						Chicka.playerdeath = false;
+
 						Freddy.inRoom = 0;
 						Freddy.playerdeath = false;
+
 						Foxy.stage = 0;
+
 						Office.light1on = false;
 						Office.light2on = false;
 						Office.door1open = true;
 						Office.door2open = true;
 						Office.monitorUp = false;
-						Office.powerRemaining = 100.0;
+						Office.powerRemaining = 100;
 					}
 				}
-
-				if (Window.startGame) {
-					if (gameTimer < 27000) {
-						++gameTimer;
+				if(Window.startGame == true) {
+					if(gameTimer < 27000) {
+						gameTimer++;
 					}
-
-					if (gameTimer == 27000) {
+					if(gameTimer == 27000) {
 						gameWin = true;
 					}
 				}
-
-				if (gameWin) {
-					if (gameWinTimer < 700) {
-						++gameWinTimer;
+				if(gameWin == true) {
+					if(gameWinTimer < 700) {
+						gameWinTimer++;
 					}
-
-					if (gameWinTimer == 700) {
+					if(gameWinTimer == 700) {
 						gameWin = false;
 						Window.startGame = false;
 						limit = 200;
@@ -175,6 +182,7 @@ public class Main extends ApplicationAdapter implements Runnable, MouseListener,
 						gameTimer = 0;
 						gameWin = false;
 						gameWinTimer = 0;
+
 						Window.needToMove = true;
 						Window.needStatic = false;
 						Window.Static = 1;
@@ -188,30 +196,33 @@ public class Main extends ApplicationAdapter implements Runnable, MouseListener,
 						Window.freddie = 1;
 						Window.chicka = 1;
 						Window.powerOut = 1;
+
 						Bonnie.inRoom = 0;
 						Bonnie.playerdeath = false;
+
 						Chicka.inRoom = 0;
 						Chicka.playerdeath = false;
+
 						Freddy.inRoom = 0;
 						Freddy.playerdeath = false;
+
 						Foxy.stage = 0;
+
 						Office.light1on = false;
 						Office.light2on = false;
 						Office.door1open = true;
 						Office.door2open = true;
 						Office.monitorUp = false;
-						Office.powerRemaining = 100.0;
+						Office.powerRemaining = 100;
 					}
 				}
-
-				if (foxyTime) {
-					if (foxyTimeTimer < 50) {
-						++foxyTimeTimer;
+				if(foxyTime == true) {
+					if(foxyTimeTimer < 50) {
+						foxyTimeTimer++;
 					}
-
-					if (foxyTimeTimer == 50) {
-						if (Office.door1open) {
-							Foxy.playerDeath = true;
+					if(foxyTimeTimer == 50) {
+						if(Office.door1open == true) {
+							Foxy.playerdeath = true;
 						} else {
 							Window.knock.play();
 							Foxy.stage = 1;
@@ -219,111 +230,95 @@ public class Main extends ApplicationAdapter implements Runnable, MouseListener,
 						}
 					}
 				}
-
 				if (Window.needToMove) {
 					if (Window.cameraPosition == 0 && timer == 2000) {
 						isReversed = false;
 						timer = 0;
 					}
-
 					if (Window.cameraPosition == limit && timer == 2000) {
 						isReversed = true;
 						timer = 0;
 					}
-
-					if (!isReversed && Window.cameraPosition < limit) {
-						++Window.cameraPosition;
+					if (isReversed == false && Window.cameraPosition < limit) {
+						Window.cameraPosition++;
 						timer = 0;
 					}
-
-					if (isReversed && Window.cameraPosition > 0) {
-						--Window.cameraPosition;
+					if (isReversed == true && Window.cameraPosition > 0) {
+						Window.cameraPosition--;
 						timer = 0;
 					}
-
 					if (Window.cameraPosition == 0 && timer != 2000) {
 						timer += 10;
 					}
-
 					if (Window.cameraPosition == limit && timer != 2000) {
 						timer += 10;
 					}
 				}
-
-				if (Window.startGame) {
+				if (Window.startGame == true) {
 					if (BonnieTick < 1000) {
-						++BonnieTick;
+						BonnieTick++;
 					}
-
 					if (BonnieTick == 1000) {
 						Bonnie.tick();
 						BonnieTick = 0;
-					}
 
+					}
 					if (ChickaTick < 1300) {
-						++ChickaTick;
+						ChickaTick++;
 					}
-
 					if (ChickaTick == 1300) {
 						Chicka.tick();
 						ChickaTick = 0;
-					}
 
+					}
 					if (FreddyTick < 1700) {
-						++FreddyTick;
+						FreddyTick++;
 					}
-
 					if (FreddyTick == 1700) {
 						Freddy.tick();
 						FreddyTick = 0;
-					}
 
-					if (FoxyTick < 1900) {
-						++FoxyTick;
 					}
-
+					if (FoxyTick < 2000) {
+						FoxyTick++;
+					}
 					if (FoxyTick == 1900) {
 						Foxy.tick();
 						FoxyTick = 0;
+
 					}
 				}
-
-				if (move && canMove) {
-					if (mouseX < 400 && Window.officeView + 5 <= 0) {
-						Window.officeView += 5;
-					} else if (mouseX > 880 && Window.officeView - 5 > -300) {
-						Window.officeView -= 5;
+				if (move == true && canMove == true) {
+					if (mouseX < 400 && !(Window.officeView + 5 > 0)) {
+						Window.officeView = Window.officeView + 5;
+					} else if (mouseX > 880 && (Window.officeView - 5 > -300)) {
+						Window.officeView = Window.officeView - 5;
 					}
-
 					move = false;
 				}
 
-				if (!move) {
+				if (move == false) {
 					if (movementRepeater < 1) {
-						++movementRepeater;
+						movementRepeater++;
 					}
-
 					if (movementRepeater == 1) {
 						move = true;
 						movementRepeater = 0;
 					}
 				}
-
-				if (monitorTransition) {
+				if (monitorTransition == true) {
 					if (monitorTimer < 20) {
-						++monitorTimer;
+						monitorTimer++;
 					}
-
 					if (monitorTimer == 20) {
 						monitorTransition = false;
+
 					}
 				}
-
-				if (Chicka.playerdeath && !Office.monitorUp) {
+				if(Chicka.playerdeath == true && Office.monitorUp == false) {
 					if (ChickaTimer < 4) {
-						++ChickaTimer;
+						ChickaTimer++;
 					}
-
 					if (ChickaTimer == 4) {
 						switch (Window.chicka) {
 							case 1:
@@ -388,17 +383,16 @@ public class Main extends ApplicationAdapter implements Runnable, MouseListener,
 								break;
 							case 16:
 								Window.chicka = 0;
-								death = true;
+								Main.death = true;
 								ChickaTimer = 0;
+								break;
 						}
 					}
 				}
-
-				if (Foxy.playerDeath) {
+				if(Foxy.playerdeath == true) {
 					if (FoxTimer < 4) {
-						++FoxTimer;
+						FoxTimer++;
 					}
-
 					if (FoxTimer == 4) {
 						switch (Window.foxdie) {
 							case 1:
@@ -475,17 +469,16 @@ public class Main extends ApplicationAdapter implements Runnable, MouseListener,
 								break;
 							case 19:
 								Window.foxdie = 0;
-								death = true;
+								Main.death = true;
 								FoxTimer = 0;
+								break;
 						}
 					}
 				}
-
-				if (Office.monitorUp && Window.cameraLocation.equals("West Hall A")) {
+				if(Office.monitorUp == true && Window.cameraLocation.equals("West Hall A")) {
 					if (FoxyTimer < 4) {
-						++FoxyTimer;
+						FoxyTimer++;
 					}
-
 					if (FoxyTimer == 4) {
 						switch (Window.Fox) {
 							case 1:
@@ -610,19 +603,19 @@ public class Main extends ApplicationAdapter implements Runnable, MouseListener,
 								break;
 							case 31:
 								Office.monitorUp = false;
-								foxyTime = true;
+								Main.foxyTime = true;
 								Window.Fox = 0;
 								FoxyTimer = 0;
+								break;
 						}
 					}
 				}
-
-				if (Bonnie.playerdeath && !Office.monitorUp) {
+				if(Bonnie.playerdeath == true && Office.monitorUp == false) {
 					if (BonnieTimer < 4) {
-						++BonnieTimer;
+						BonnieTimer++;
 					}
-
 					if (BonnieTimer == 4) {
+
 						switch (Window.bonnie) {
 							case 1:
 								Window.bonnie = 2;
@@ -666,17 +659,16 @@ public class Main extends ApplicationAdapter implements Runnable, MouseListener,
 								break;
 							case 11:
 								Window.bonnie = 0;
-								death = true;
+								Main.death = true;
 								BonnieTimer = 0;
+								break;
 						}
 					}
 				}
-
-				if (Freddy.playerdeath && !Office.monitorUp) {
+				if(Freddy.playerdeath == true && Office.monitorUp == false) {
 					if (FreddyTimer < 4) {
-						++FreddyTimer;
+						FreddyTimer++;
 					}
-
 					if (FreddyTimer == 4) {
 						switch (Window.freddie) {
 							case 1:
@@ -789,17 +781,16 @@ public class Main extends ApplicationAdapter implements Runnable, MouseListener,
 								break;
 							case 28:
 								Window.freddie = 0;
-								death = true;
+								Main.death = true;
 								FreddyTimer = 0;
+								break;
 						}
 					}
 				}
-
-				if (Office.powerRemaining == 0.0) {
+				if (Office.powerRemaining == 0) {
 					if (powerOutTimer < 4) {
-						++powerOutTimer;
+						powerOutTimer++;
 					}
-
 					if (powerOutTimer == 4) {
 						switch (Window.powerOut) {
 							case 1:
@@ -879,78 +870,75 @@ public class Main extends ApplicationAdapter implements Runnable, MouseListener,
 								powerOutTimer = 0;
 								break;
 							case 20:
-								Office.powerRemaining = -1.0;
+								Office.powerRemaining = -1;
 								Window.powerOut = 0;
 								powerOutTimer = 0;
+								break;
 						}
 					}
 				}
-
-				if (this.StaticTimer < 6) {
-					++this.StaticTimer;
+				if (StaticTimer < 6) {
+					StaticTimer++;
 				}
-
-				if (this.StaticTimer == 6) {
+				if (StaticTimer == 6) {
 					switch (Window.Static) {
 						case 1:
 							Window.Static = 2;
-							this.StaticTimer = 0;
+							StaticTimer = 0;
 							break;
 						case 2:
 							Window.Static = 3;
-							this.StaticTimer = 0;
+							StaticTimer = 0;
 							break;
 						case 3:
 							Window.Static = 4;
-							this.StaticTimer = 0;
+							StaticTimer = 0;
 							break;
 						case 4:
 							Window.Static = 5;
-							this.StaticTimer = 0;
+							StaticTimer = 0;
 							break;
 						case 5:
 							Window.Static = 6;
-							this.StaticTimer = 0;
+							StaticTimer = 0;
 							break;
 						case 6:
 							Window.Static = 7;
-							this.StaticTimer = 0;
+							StaticTimer = 0;
 							break;
 						case 7:
 							Window.Static = 8;
-							this.StaticTimer = 0;
+							StaticTimer = 0;
 							break;
 						case 8:
 							Window.Static = 1;
-							this.StaticTimer = 0;
+							StaticTimer = 0;
+							break;
 					}
 				}
-
-				if (Window.startClicked) {
+				if (Window.startClicked == true) {
 					if (newsTimer < 500) {
-						++newsTimer;
+						newsTimer++;
 					}
-
 					if (newsTimer == 500) {
 						newsTimer = 0;
 						Window.startGame = true;
 						Window.startClicked = false;
 						Window.blip.play();
 					}
+
 				}
-
-				if (Window.startGame) {
+				if (Window.startGame == true) {
 					if (powerTick < 100) {
-						++powerTick;
+						powerTick++;
 					}
-
 					if (powerTick == 100) {
 						Office.descreasepower();
 						powerTick = 0;
 					}
 				}
-			} catch (Exception var2) {
-				var2.printStackTrace();
+			} catch (Exception a) {
+				a.printStackTrace();
 			}
 		}
 	}
@@ -959,123 +947,153 @@ public class Main extends ApplicationAdapter implements Runnable, MouseListener,
 		Window window = new Window();
 		window.addMouseListener(this);
 		window.addMouseMotionListener(this);
+
 	}
 
+	@Override
 	public void mouseClicked(MouseEvent e) {
-		if (!Window.startGame && e.getX() >= 100 && e.getX() <= 310 && e.getY() >= 400 && e.getY() <= 450) {
+		if (Window.startGame == false && e.getX() >= 100 && e.getX() <= 310
+				&& e.getY() >= 400 && e.getY() <= 450) {
 			Window.startClicked = true;
 		}
-
-		if (Window.startGame && e.getX() >= 30 && e.getX() <= 68 && e.getY() >= 383 && e.getY() <= 437 && !Office.light1on) {
+		if (Window.startGame == true && e.getX() >= 30 && e.getX() <= 68
+				&& e.getY() >= 383 && e.getY() <= 437
+				&& Office.light1on == false) {
 			Office.light1on = true;
 			Window.light.play();
-		} else if (Window.startGame && e.getX() >= 30 && e.getX() <= 68 && e.getY() >= 383 && e.getY() <= 437 && Office.light1on) {
+		} else if (Window.startGame == true && e.getX() >= 30 && e.getX() <= 68
+				&& e.getY() >= 383 && e.getY() <= 437
+				&& Office.light1on == true) {
 			Office.light1on = false;
 			Window.light.stop();
 		}
-
-		if (Window.startGame && e.getX() >= 1212 && e.getX() <= 1246 && e.getY() >= 383 && e.getY() <= 437 && !Office.light2on) {
+		if (Window.startGame == true && e.getX() >= 1212 && e.getX() <= 1246
+				&& e.getY() >= 383 && e.getY() <= 437
+				&& Office.light2on == false) {
 			Office.light2on = true;
 			Window.light.play();
-		} else if (Window.startGame && e.getX() >= 1212 && e.getX() <= 1246 && e.getY() >= 383 && e.getY() <= 437 && Office.light2on) {
+		} else if (Window.startGame == true && e.getX() >= 1212
+				&& e.getX() <= 1246 && e.getY() >= 383 && e.getY() <= 437
+				&& Office.light2on == true) {
 			Office.light2on = false;
 			Window.light.stop();
 		}
-
-		if (Window.startGame && e.getX() >= 30 && e.getX() <= 68 && e.getY() >= 300 && e.getY() <= 357 && Office.door1open) {
+		if (Window.startGame == true && e.getX() >= 30 && e.getX() <= 68
+				&& e.getY() >= 300 && e.getY() <= 357
+				&& Office.door1open == true) {
 			Office.door1open = false;
 			Window.door.play();
-		} else if (Window.startGame && e.getX() >= 30 && e.getX() <= 68 && e.getY() >= 300 && e.getY() <= 357 && !Office.door1open) {
+		} else if (Window.startGame == true && e.getX() >= 30 && e.getX() <= 68
+				&& e.getY() >= 300 && e.getY() <= 357
+				&& Office.door1open == false) {
 			Office.door1open = true;
 			Window.door.play();
 		}
-
-		if (Window.startGame && e.getX() >= 1212 && e.getX() <= 1246 && e.getY() >= 300 && e.getY() <= 357 && Office.door2open) {
+		if (Window.startGame == true && e.getX() >= 1212 && e.getX() <= 1246
+				&& e.getY() >= 300 && e.getY() <= 357
+				&& Office.door2open == true) {
 			Office.door2open = false;
 			Window.door.play();
-		} else if (Window.startGame && e.getX() >= 1212 && e.getX() <= 1246 && e.getY() >= 300 && e.getY() <= 357 && !Office.door2open) {
+		} else if (Window.startGame == true && e.getX() >= 1212
+				&& e.getX() <= 1246 && e.getY() >= 300 && e.getY() <= 357
+				&& Office.door2open == false) {
 			Office.door2open = true;
 			Window.door.play();
 		}
-
-		if (Office.monitorUp) {
-			if (e.getX() >= 923 && e.getX() <= 973 && e.getY() >= 343 && e.getY() <= 377) {
+		if (Office.monitorUp == true) {
+			if (e.getX() >= 923 && e.getX() <= 973 && e.getY() >= 343
+					&& e.getY() <= 377) {
 				Window.cameraLocation = "Show Stage";
 				Window.blip.play();
 			}
-
-			if (e.getX() >= 904 && e.getX() <= 954 && e.getY() >= 399 && e.getY() <= 433) {
+			if (e.getX() >= 904 && e.getX() <= 954 && e.getY() >= 399
+					&& e.getY() <= 433) {
 				Window.cameraLocation = "Dining Area";
 				Window.blip.play();
 			}
-
-			if (e.getX() >= 877 && e.getX() <= 927 && e.getY() >= 481 && e.getY() <= 515) {
+			if (e.getX() >= 877 && e.getX() <= 927 && e.getY() >= 481
+					&& e.getY() <= 515) {
 				Window.cameraLocation = "Pirate Cove";
 				Window.blip.play();
 			}
-
-			if (e.getX() >= 926 && e.getX() <= 976 && e.getY() >= 596 && e.getY() <= 630) {
+			if (e.getX() >= 926 && e.getX() <= 976 && e.getY() >= 596
+					&& e.getY() <= 630) {
 				Window.cameraLocation = "West Hall A";
 				Window.blip.play();
 			}
-
-			if (e.getX() >= 926 && e.getX() <= 976 && e.getY() >= 631 && e.getY() <= 665) {
+			if (e.getX() >= 926 && e.getX() <= 976 && e.getY() >= 631
+					&& e.getY() <= 665) {
 				Window.cameraLocation = "West Hall B";
 				Window.blip.play();
 			}
-
-			if (e.getX() >= 850 && e.getX() <= 900 && e.getY() >= 578 && e.getY() <= 612) {
+			if (e.getX() >= 850 && e.getX() <= 900 && e.getY() >= 578
+					&& e.getY() <= 612) {
 				Window.cameraLocation = "Supply Closet";
 				Window.blip.play();
 			}
-
-			if (e.getX() >= 1034 && e.getX() <= 1084 && e.getY() >= 596 && e.getY() <= 630) {
+			if (e.getX() >= 1034 && e.getX() <= 1084 && e.getY() >= 596
+					&& e.getY() <= 630) {
 				Window.cameraLocation = "East Hall A";
 				Window.blip.play();
 			}
-
-			if (e.getX() >= 1034 && e.getX() <= 1084 && e.getY() >= 631 && e.getY() <= 665) {
+			if (e.getX() >= 1034 && e.getX() <= 1084 && e.getY() >= 631
+					&& e.getY() <= 665) {
 				Window.cameraLocation = "East Hall B";
 				Window.blip.play();
 			}
-
-			if (e.getX() >= 796 && e.getX() <= 846 && e.getY() >= 431 && e.getY() <= 465) {
+			if (e.getX() >= 796 && e.getX() <= 846 && e.getY() >= 431
+					&& e.getY() <= 465) {
 				Window.cameraLocation = "Backstage";
 				Window.blip.play();
 			}
-
-			if (e.getX() >= 1146 && e.getX() <= 1196 && e.getY() >= 436 && e.getY() <= 470) {
+			if (e.getX() >= 1146 && e.getX() <= 1196 && e.getY() >= 436
+					&& e.getY() <= 470) {
 				Window.cameraLocation = "Restrooms";
 				Window.blip.play();
 			}
 		}
-
 	}
 
+	@Override
 	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+
 	}
 
+	@Override
 	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+
 	}
 
+	@Override
 	public void mousePressed(MouseEvent e) {
+
 	}
 
+	@Override
 	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+
 	}
 
+	@Override
 	public void mouseDragged(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+
 	}
 
+	@Override
 	public void mouseMoved(MouseEvent e) {
-		if (Window.startGame && !Office.monitorUp && !monitorTransition && !Freddy.playerdeath && !Bonnie.playerdeath && !Chicka.playerdeath && !Foxy.playerDeath) {
-			if (Window.officeView < -300 || Window.officeView > 0 || e.getX() >= 400 && e.getX() <= 880) {
-				canMove = false;
-			} else {
+		if (Window.startGame == true && Office.monitorUp == false
+				&& monitorTransition == false && Freddy.playerdeath == false && Bonnie.playerdeath == false && Chicka.playerdeath == false && Foxy.playerdeath == false) {
+			if (Window.officeView >= -300 && Window.officeView <= 0
+					&& (e.getX() < 400 || e.getX() > 880)) {
 				canMove = true;
+			} else {
+				canMove = false;
 			}
-
-			if (e.getX() > 360 && e.getY() > 660 && e.getX() < 860 && !Freddy.playerdeath && !Bonnie.playerdeath && !Chicka.playerdeath && !Foxy.playerDeath) {
+			if (e.getX() > 360 && e.getY() > 660 && e.getX() < 860 && Freddy.playerdeath == false && Bonnie.playerdeath == false && Chicka.playerdeath == false && Foxy.playerdeath == false) {
 				Office.monitorUp = true;
 				Window.blip.play();
 				monitorTransition = true;
@@ -1083,13 +1101,15 @@ public class Main extends ApplicationAdapter implements Runnable, MouseListener,
 			}
 		}
 
-		if (Window.startGame && Office.monitorUp && !monitorTransition && e.getX() > 360 && e.getY() > 660 && e.getX() < 860) {
-			Office.monitorUp = false;
-			Window.blip.play();
-			monitorTransition = true;
-			monitorTimer = 0;
+		if (Window.startGame == true && Office.monitorUp == true
+				&& monitorTransition == false) {
+			if (e.getX() > 360 && e.getY() > 660 && e.getX() < 860) {
+				Office.monitorUp = false;
+				Window.blip.play();
+				monitorTransition = true;
+				monitorTimer = 0;
+			}
 		}
-
 		mouseX = e.getX();
 		mouseY = e.getY();
 	}

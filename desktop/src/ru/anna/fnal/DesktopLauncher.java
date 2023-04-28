@@ -10,6 +10,6 @@ public class DesktopLauncher {
 		Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
 		config.setForegroundFPS(60);
 		config.setTitle("FNAL");
-		new Lwjgl3Application(new Main(), config);
+		//new Lwjgl3Application(new Main(), config);
 	}
 }

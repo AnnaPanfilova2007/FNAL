@@ -1,16 +1,24 @@
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by FernFlower decompiler)
+//
 package ru.anna.fnal;
-
 public class Chicka {
-    static int inRoom = 0;
+    public static int inRoom = 0;
     private static int Difficulty;
     public static boolean playerdeath = false;
 
-    public void Chicka1(int Diffuculty) {
+    public Chicka() {
+    }
+
+    public void Chicka(int Diffuculty) {
         Difficulty = Difficulty;
     }
+
     public static int isInRoom() {
         return inRoom;
     }
+
     public static void tick() {
         if (inRoom == 8 && Office.door2open && Office.monitorUp) {
             inRoom = 9;

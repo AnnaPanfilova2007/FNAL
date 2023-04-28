@@ -1,44 +1,47 @@
 package ru.anna.fnal;
 
+import javax.imageio.ImageIO;
+import javax.swing.*;
+
 import java.applet.Applet;
 import java.applet.AudioClip;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.Toolkit;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.FilteredImageSource;
 import java.awt.image.ImageFilter;
 import java.awt.image.ImageProducer;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
-import javax.swing.JFrame;
+import java.awt.image.RGBImageFilter;
+import java.io.*;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class Window extends JFrame {
+
     public static boolean needToMove = true;
     public static boolean needStatic = false;
-    public static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-    public static double Width;
-    public static double Height;
+    public static Dimension screenSize = Toolkit.getDefaultToolkit()
+            .getScreenSize();
+    public static double Width = screenSize.getWidth();
+    public static double Height = screenSize.getHeight();
     public static int cameraPosition;
-    public static int Static;
-    public static boolean startGame;
-    public static boolean startClicked;
-    public static String cameraLocation;
-    public static boolean ifloading;
-    public static int officeView;
+    public static int Static = 1;
+    public static boolean startGame = false;
+    public static boolean startClicked = false;
+    public static String cameraLocation = "Show Stage";
+    public static boolean ifloading = true;
+    public static int officeView = -100;
     private Image Image;
-    public static int Fox;
-    public static int bonnie;
-    public static int foxdie;
-    public static int freddie;
-    public static int chicka;
-    public static int powerOut;
-    public static boolean mainmenumusicplaying;
-    public static boolean gamemusicplaying;
-    public static boolean screamplay;
+    public static int Fox = 1;
+    public static int bonnie = 1;
+    public static int foxdie = 1;
+    public static int freddie = 1;
+    public static int chicka = 1;
+    public static int powerOut = 1;
+    public static boolean mainmenumusicplaying = false;
+    public static boolean gamemusicplaying = false;
+    public static boolean screamplay = false;
     private Graphics Graphic;
     static AudioClip knock;
     AudioClip run;
@@ -53,1544 +56,1176 @@ public class Window extends JFrame {
     static AudioClip blip;
     BufferedImage stage;
     BufferedImage currentView;
-    BufferedImage bonnie1;
-    BufferedImage bonnie2;
-    BufferedImage bonnie3;
-    BufferedImage bonnie4;
-    BufferedImage bonnie5;
-    BufferedImage bonnie6;
-    BufferedImage bonnie7;
-    BufferedImage bonnie8;
-    BufferedImage bonnie9;
-    BufferedImage bonnie10;
-    BufferedImage bonnie11;
-    BufferedImage chicka1;
-    BufferedImage chicka2;
-    BufferedImage chicka3;
-    BufferedImage chicka4;
-    BufferedImage chicka5;
-    BufferedImage chicka6;
-    BufferedImage chicka7;
-    BufferedImage chicka8;
-    BufferedImage chicka9;
-    BufferedImage chicka10;
-    BufferedImage chicka11;
-    BufferedImage chicka12;
-    BufferedImage chicka13;
-    BufferedImage chicka14;
-    BufferedImage chicka15;
-    BufferedImage chicka16;
-    BufferedImage foxy1;
-    BufferedImage foxy2;
-    BufferedImage foxy3;
-    BufferedImage foxy4;
-    BufferedImage foxy5;
-    BufferedImage foxy6;
-    BufferedImage foxy7;
-    BufferedImage foxy8;
-    BufferedImage foxy9;
-    BufferedImage foxy10;
-    BufferedImage foxy11;
-    BufferedImage foxy12;
-    BufferedImage foxy13;
-    BufferedImage foxy14;
-    BufferedImage foxy15;
-    BufferedImage foxy16;
-    BufferedImage foxy17;
-    BufferedImage foxy18;
-    BufferedImage foxy19;
-    BufferedImage freddy1;
-    BufferedImage freddy2;
-    BufferedImage freddy3;
-    BufferedImage freddy4;
-    BufferedImage freddy5;
-    BufferedImage freddy6;
-    BufferedImage freddy7;
-    BufferedImage freddy8;
-    BufferedImage freddy9;
-    BufferedImage freddy10;
-    BufferedImage freddy11;
-    BufferedImage freddy12;
-    BufferedImage freddy13;
-    BufferedImage freddy14;
-    BufferedImage freddy15;
-    BufferedImage freddy16;
-    BufferedImage freddy17;
-    BufferedImage freddy18;
-    BufferedImage freddy19;
-    BufferedImage freddy20;
-    BufferedImage freddy21;
-    BufferedImage freddy22;
-    BufferedImage freddy23;
-    BufferedImage freddy24;
-    BufferedImage freddy25;
-    BufferedImage freddy26;
-    BufferedImage freddy27;
-    BufferedImage freddy28;
-    BufferedImage freddy29;
-    BufferedImage powerout1;
-    BufferedImage powerout2;
-    BufferedImage powerout3;
-    BufferedImage powerout4;
-    BufferedImage powerout5;
-    BufferedImage powerout6;
-    BufferedImage powerout7;
-    BufferedImage powerout8;
-    BufferedImage powerout9;
-    BufferedImage powerout10;
-    BufferedImage powerout11;
-    BufferedImage powerout12;
-    BufferedImage powerout13;
-    BufferedImage powerout14;
-    BufferedImage powerout15;
-    BufferedImage powerout16;
-    BufferedImage powerout17;
-    BufferedImage powerout18;
-    BufferedImage powerout19;
-    BufferedImage powerout20;
-    BufferedImage powerout21;
-    BufferedImage foxrun1;
-    BufferedImage foxrun2;
-    BufferedImage foxrun3;
-    BufferedImage foxrun4;
-    BufferedImage foxrun5;
-    BufferedImage foxrun6;
-    BufferedImage foxrun7;
-    BufferedImage foxrun8;
-    BufferedImage foxrun9;
-    BufferedImage foxrun10;
-    BufferedImage foxrun11;
-    BufferedImage foxrun12;
-    BufferedImage foxrun13;
-    BufferedImage foxrun14;
-    BufferedImage foxrun15;
-    BufferedImage foxrun16;
-    BufferedImage foxrun17;
-    BufferedImage foxrun18;
-    BufferedImage foxrun19;
-    BufferedImage foxrun20;
-    BufferedImage foxrun21;
-    BufferedImage foxrun22;
-    BufferedImage foxrun23;
-    BufferedImage foxrun24;
-    BufferedImage foxrun25;
-    BufferedImage foxrun26;
-    BufferedImage foxrun27;
-    BufferedImage foxrun28;
-    BufferedImage foxrun29;
-    BufferedImage foxrun30;
-    BufferedImage foxrun31;
-    BufferedImage static1;
-    BufferedImage static2;
-    BufferedImage static3;
-    BufferedImage static4;
-    BufferedImage static5;
-    BufferedImage static6;
-    BufferedImage static7;
-    BufferedImage static8;
-    BufferedImage mainMenu;
-    BufferedImage mainMenu2;
-    BufferedImage mainMenu3;
-    BufferedImage mainMenu4;
-    BufferedImage stageNoBonnie;
-    BufferedImage stageNoChicka;
-    BufferedImage stageNoBonnieChicka;
-    BufferedImage stageFreddyStare;
-    BufferedImage stageNone;
-    BufferedImage diningNone;
-    BufferedImage diningBonnieFar;
-    BufferedImage diningBonnieClose;
-    BufferedImage diningChickaFar;
-    BufferedImage diningChickaClose;
-    BufferedImage diningFreddy;
-    BufferedImage eastHallAChickaFar;
-    BufferedImage eastHallAChickaClose;
-    BufferedImage eastHallAFreddy;
-    BufferedImage eastHallANone;
-    BufferedImage eastHallBNone;
-    BufferedImage eastHallBChicka;
-    BufferedImage eastHallBFreddy;
-    BufferedImage backstageNone;
-    BufferedImage backstageFar;
-    BufferedImage backstageClose;
-    BufferedImage piratecoveStage0;
-    BufferedImage piratecoveStage1;
-    BufferedImage piratecoveStage2;
-    BufferedImage piratecoveStage3;
-    BufferedImage restroomsNone;
-    BufferedImage restroomsChickaClose;
-    BufferedImage restroomsChickaFar;
-    BufferedImage restroomsFreddy;
-    BufferedImage westHallANone;
-    BufferedImage westHallABonnie;
-    BufferedImage westHallBNone;
-    BufferedImage westHallBBonnie;
-    BufferedImage supplyclosetNone;
-    BufferedImage supplyclosetBonnie;
-    BufferedImage fiveNightsLogo;
-    BufferedImage newGameLogo;
-    BufferedImage arrows;
-    BufferedImage office;
-    BufferedImage officeLeftLight;
-    BufferedImage officeRightLight;
-    BufferedImage officeBonnie;
-    BufferedImage officeChicka;
-    BufferedImage officePowerOut;
-    BufferedImage officePowerOutFreddy;
-    BufferedImage name;
-    BufferedImage cameraBar;
-    BufferedImage loading;
-    BufferedImage newspaper;
-    BufferedImage leftNone;
-    BufferedImage leftLight;
-    BufferedImage leftDoor;
-    BufferedImage leftBoth;
-    BufferedImage rightNone;
-    BufferedImage rightLight;
-    BufferedImage rightDoor;
-    BufferedImage rightBoth;
-    BufferedImage cameraMinimap;
-    BufferedImage A1;
-    BufferedImage B1;
-    BufferedImage C1;
-    BufferedImage A2;
-    BufferedImage B2;
-    BufferedImage Three;
-    BufferedImage A4;
-    BufferedImage B4;
-    BufferedImage Five;
-    BufferedImage Six;
-    BufferedImage blank;
-    BufferedImage supplycloset;
-    BufferedImage showstage;
-    BufferedImage piratecove;
-    BufferedImage backstage;
-    BufferedImage diningarea;
-    BufferedImage westhall;
-    BufferedImage ehallcorner;
-    BufferedImage whallcorner;
-    BufferedImage restrooms;
-    BufferedImage easthall;
-    BufferedImage use1;
-    BufferedImage use2;
-    BufferedImage use3;
-    BufferedImage use4;
-    BufferedImage use5;
-    BufferedImage use;
-    BufferedImage powerleft;
-    BufferedImage percentsign;
-    BufferedImage leftdoor1;
-    BufferedImage leftdoor2;
-    BufferedImage leftdoor3;
-    BufferedImage leftdoor4;
-    BufferedImage leftdoor5;
-    BufferedImage leftdoor6;
-    BufferedImage leftdoor7;
-    BufferedImage leftdoor8;
-    BufferedImage leftdoor9;
-    BufferedImage leftdoor10;
-    BufferedImage leftdoor11;
-    BufferedImage leftdoor12;
-    BufferedImage leftdoor13;
-    BufferedImage rightdoor1;
-    BufferedImage rightdoor2;
-    BufferedImage rightdoor3;
-    BufferedImage rightdoor4;
-    BufferedImage rightdoor5;
-    BufferedImage rightdoor6;
-    BufferedImage rightdoor7;
-    BufferedImage rightdoor8;
-    BufferedImage rightdoor9;
-    BufferedImage rightdoor10;
-    BufferedImage rightdoor11;
-    BufferedImage rightdoor12;
-    BufferedImage rightdoor13;
-    BufferedImage onehundred;
-    BufferedImage ninety;
-    BufferedImage eighty;
-    BufferedImage seventy;
-    BufferedImage sixty;
-    BufferedImage fifty;
-    BufferedImage forty;
-    BufferedImage thirty;
-    BufferedImage twenty;
-    BufferedImage ten;
-    BufferedImage zero;
-    BufferedImage lose;
-    BufferedImage win;
-
-
-    static {
-        Width = screenSize.getWidth();
-        Height = screenSize.getHeight();
-        Static = 1;
-        startGame = false;
-        startClicked = false;
-        cameraLocation = "Show Stage";
-        ifloading = true;
-        officeView = -100;
-        Fox = 1;
-        bonnie = 1;
-        foxdie = 1;
-        freddie = 1;
-        chicka = 1;
-        powerOut = 1;
-        mainmenumusicplaying = false;
-        gamemusicplaying = false;
-        screamplay = false;
-    }
+    BufferedImage bonnie1, bonnie2, bonnie3, bonnie4, bonnie5, bonnie6,
+            bonnie7, bonnie8, bonnie9, bonnie10, bonnie11, chicka1, chicka2,
+            chicka3, chicka4, chicka5, chicka6, chicka7, chicka8, chicka9,
+            chicka10, chicka11, chicka12, chicka13, chicka14, chicka15,
+            chicka16, foxy1, foxy2, foxy3, foxy4, foxy5, foxy6, foxy7, foxy8,
+            foxy9, foxy10, foxy11, foxy12, foxy13, foxy14, foxy15, foxy16,
+            foxy17, foxy18, foxy19, freddy1, freddy2, freddy3, freddy4,
+            freddy5, freddy6, freddy7, freddy8, freddy9, freddy10, freddy11,
+            freddy12, freddy13, freddy14, freddy15, freddy16, freddy17,
+            freddy18, freddy19, freddy20, freddy21, freddy22, freddy23,
+            freddy24, freddy25, freddy26, freddy27, freddy28, freddy29,
+            powerout1, powerout2, powerout3, powerout4, powerout5, powerout6,
+            powerout7, powerout8, powerout9, powerout10, powerout11,
+            powerout12, powerout13, powerout14, powerout15, powerout16,
+            powerout17, powerout18, powerout19, powerout20, powerout21,
+            foxrun1, foxrun2, foxrun3, foxrun4, foxrun5, foxrun6, foxrun7,
+            foxrun8, foxrun9, foxrun10, foxrun11, foxrun12, foxrun13, foxrun14,
+            foxrun15, foxrun16, foxrun17, foxrun18, foxrun19, foxrun20,
+            foxrun21, foxrun22, foxrun23, foxrun24, foxrun25, foxrun26,
+            foxrun27, foxrun28, foxrun29, foxrun30, foxrun31, static1, static2,
+            static3, static4, static5, static6, static7, static8, mainMenu,
+            mainMenu2, mainMenu3, mainMenu4, stageNoBonnie, stageNoChicka,
+            stageNoBonnieChicka, stageFreddyStare, stageNone, diningNone,
+            diningBonnieFar, diningBonnieClose, diningChickaFar,
+            diningChickaClose, diningFreddy, eastHallAChickaFar,
+            eastHallAChickaClose, eastHallAFreddy, eastHallANone,
+            eastHallBNone, eastHallBChicka, eastHallBFreddy, backstageNone,
+            backstageFar, backstageClose, piratecoveStage0, piratecoveStage1,
+            piratecoveStage2, piratecoveStage3, restroomsNone,
+            restroomsChickaClose, restroomsChickaFar, restroomsFreddy,
+            westHallANone, westHallABonnie, westHallBNone, westHallBBonnie,
+            supplyclosetNone, supplyclosetBonnie, fiveNightsLogo, newGameLogo,
+            arrows, office, officeLeftLight, officeRightLight, officeBonnie,
+            officeChicka, officePowerOut, officePowerOutFreddy, name,
+            cameraBar, loading, newspaper, leftNone, leftLight, leftDoor,
+            leftBoth, rightNone, rightLight, rightDoor, rightBoth,
+            cameraMinimap, A1, B1, C1, A2, B2, Three, A4, B4, Five, Six, blank,
+            supplycloset, showstage, piratecove, backstage, diningarea,
+            westhall, ehallcorner, whallcorner, restrooms, easthall, use1,
+            use2, use3, use4, use5, use, powerleft, percentsign, leftdoor1,
+            leftdoor2, leftdoor3, leftdoor4, leftdoor5, leftdoor6, leftdoor7,
+            leftdoor8, leftdoor9, leftdoor10, leftdoor11, leftdoor12,
+            leftdoor13, rightdoor1, rightdoor2, rightdoor3, rightdoor4,
+            rightdoor5, rightdoor6, rightdoor7, rightdoor8, rightdoor9,
+            rightdoor10, rightdoor11, rightdoor12, rightdoor13, onehundred,
+            ninety, eighty, seventy, sixty, fifty, forty, thirty, twenty, ten,
+            zero, lose, win;
 
     public Window() {
         super("Five Nights at Freddy's");
-        this.setSize((int)this.width(Width), (int)this.height(Height));
-        this.setVisible(true);
-        this.setDefaultCloseOperation(3);
-        this.setResizable(false);
-
+        setSize((int) width(Width), (int) height(Height));
+        setVisible(true);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setResizable(false);
         try {
-            knock = Applet.newAudioClip(Window.class.getResource("FoxyKnock.wav"));
-            this.run = Applet.newAudioClip(Window.class.getResource("FoxyRun.wav"));
-            scream = Applet.newAudioClip(Window.class.getResource("XSCREAM.wav"));
-            this.ambiance1 = Applet.newAudioClip(Window.class.getResource("Ambiance1.wav"));
-            this.ambiance2 = Applet.newAudioClip(Window.class.getResource("Ambience2.wav"));
-            door = Applet.newAudioClip(Window.class.getResource("Door.wav"));
-            light = Applet.newAudioClip(Window.class.getResource("Ambiance3.wav"));
-            this.main1 = Applet.newAudioClip(Window.class.getResource("Mainmenu1.wav"));
-            this.main2 = Applet.newAudioClip(Window.class.getResource("Mainmenu2.wav"));
-            blip = Applet.newAudioClip(Window.class.getResource("blip.wav"));
-        } catch (Exception var3) {
-            var3.printStackTrace();
+            knock = Applet.newAudioClip(new URL("file:///C://FNAL//assets/FoxyKnock.wav"));
+            run = Applet.newAudioClip(new URL("file:///C://FNAL//assets/FoxyRun.wav"));
+            scream = Applet.newAudioClip(new URL("file:///C://FNAL//assets/XSCREAM.wav"));
+            ambiance1 = Applet.newAudioClip(new URL("file:///C://FNAL//assets/Ambiance1.wav"));
+            ambiance2 = Applet.newAudioClip(new URL("file:///C://FNAL//assets/Ambience2.wav"));
+            door = Applet.newAudioClip(new URL("file:///C://FNAL//assets/Door.wav"));
+            light = Applet.newAudioClip(new URL("file:///C://FNAL//assets/Ambiance3.wav"));
+            main1 = Applet.newAudioClip(new URL("file:///C://FNAL//assets/Mainmenu1.wav"));
+            main2 = Applet.newAudioClip(new URL("file:///C://FNAL//assets/Mainmenu2.wav"));
+            blip = Applet.newAudioClip(new URL("file:///C://FNAL//assets/blip.wav"));
+        } catch (Exception a) {
+            a.printStackTrace();
         }
-
         try {
-            this.loading = ImageIO.read(Window.class.getResource("jump.jpg"));
-            this.lose = ImageIO.read(Window.class.getResource("Lose.png"));
-            this.win = ImageIO.read(Window.class.getResource("StandardWin.png"));
-            this.zero = ImageIO.read(Window.class.getResource("zero.png"));
-            this.ten = ImageIO.read(Window.class.getResource("ten.png"));
-            this.twenty = ImageIO.read(Window.class.getResource("twenty.png"));
-            this.thirty = ImageIO.read(Window.class.getResource("thirty.png"));
-            this.forty = ImageIO.read(Window.class.getResource("forty.png"));
-            this.fifty = ImageIO.read(Window.class.getResource("fifty.png"));
-            this.sixty = ImageIO.read(Window.class.getResource("sixty.png"));
-            this.seventy = ImageIO.read(Window.class.getResource("seventy.png"));
-            this.eighty = ImageIO.read(Window.class.getResource("eighty.png"));
-            this.ninety = ImageIO.read(Window.class.getResource("ninety.png"));
-            this.onehundred = ImageIO.read(Window.class.getResource("onehundred.png"));
-            this.supplycloset = ImageIO.read(Window.class.getResource("50.png"));
-            this.showstage = ImageIO.read(Window.class.getResource("54.png"));
-            this.piratecove = ImageIO.read(Window.class.getResource("70.png"));
-            this.backstage = ImageIO.read(Window.class.getResource("71.png"));
-            this.diningarea = ImageIO.read(Window.class.getResource("72.png"));
-            this.westhall = ImageIO.read(Window.class.getResource("74.png"));
-            this.ehallcorner = ImageIO.read(Window.class.getResource("75.png"));
-            this.whallcorner = ImageIO.read(Window.class.getResource("76.png"));
-            this.restrooms = ImageIO.read(Window.class.getResource("77.png"));
-            this.easthall = ImageIO.read(Window.class.getResource("79.png"));
-            this.blank = ImageIO.read(Window.class.getResource("blank.png"));
-            this.leftdoor1 = ImageIO.read(Window.class.getResource("89.png"));
-            this.leftdoor2 = ImageIO.read(Window.class.getResource("91.png"));
-            this.leftdoor3 = ImageIO.read(Window.class.getResource("92.png"));
-            this.leftdoor4 = ImageIO.read(Window.class.getResource("93.png"));
-            this.leftdoor5 = ImageIO.read(Window.class.getResource("94.png"));
-            this.leftdoor6 = ImageIO.read(Window.class.getResource("95.png"));
-            this.leftdoor7 = ImageIO.read(Window.class.getResource("96.png"));
-            this.leftdoor8 = ImageIO.read(Window.class.getResource("97.png"));
-            this.leftdoor9 = ImageIO.read(Window.class.getResource("98.png"));
-            this.leftdoor10 = ImageIO.read(Window.class.getResource("99.png"));
-            this.leftdoor11 = ImageIO.read(Window.class.getResource("100.png"));
-            this.leftdoor12 = ImageIO.read(Window.class.getResource("101.png"));
-            this.leftdoor13 = ImageIO.read(Window.class.getResource("102.png"));
-            this.rightdoor1 = ImageIO.read(Window.class.getResource("106.png"));
-            this.rightdoor2 = ImageIO.read(Window.class.getResource("107.png"));
-            this.rightdoor3 = ImageIO.read(Window.class.getResource("108.png"));
-            this.rightdoor4 = ImageIO.read(Window.class.getResource("109.png"));
-            this.rightdoor5 = ImageIO.read(Window.class.getResource("110.png"));
-            this.rightdoor6 = ImageIO.read(Window.class.getResource("111.png"));
-            this.rightdoor7 = ImageIO.read(Window.class.getResource("112.png"));
-            this.rightdoor8 = ImageIO.read(Window.class.getResource("113.png"));
-            this.rightdoor9 = ImageIO.read(Window.class.getResource("114.png"));
-            this.rightdoor10 = ImageIO.read(Window.class.getResource("115.png"));
-            this.rightdoor11 = ImageIO.read(Window.class.getResource("116.png"));
-            this.rightdoor12 = ImageIO.read(Window.class.getResource("117.png"));
-            this.rightdoor13 = ImageIO.read(Window.class.getResource("118.png"));
-            this.A1 = ImageIO.read(Window.class.getResource("170.png"));
-            this.B1 = ImageIO.read(Window.class.getResource("171.png"));
-            this.C1 = ImageIO.read(Window.class.getResource("177.png"));
-            this.A2 = ImageIO.read(Window.class.getResource("172.png"));
-            this.B2 = ImageIO.read(Window.class.getResource("165.png"));
-            this.Three = ImageIO.read(Window.class.getResource("168.png"));
-            this.A4 = ImageIO.read(Window.class.getResource("169.png"));
-            this.B4 = ImageIO.read(Window.class.getResource("173.png"));
-            this.Five = ImageIO.read(Window.class.getResource("174.png"));
-            this.Six = ImageIO.read(Window.class.getResource("175.png"));
-            this.fiveNightsLogo = ImageIO.read(Window.class.getResource("444.png"));
-            this.newGameLogo = ImageIO.read(Window.class.getResource("448.png"));
-            this.arrows = ImageIO.read(Window.class.getResource("450.png"));
-            this.mainMenu = ImageIO.read(Window.class.getResource("431.png"));
-            this.name = ImageIO.read(Window.class.getResource("433.png"));
-            this.mainMenu2 = ImageIO.read(Window.class.getResource("440.png"));
-            this.mainMenu3 = ImageIO.read(Window.class.getResource("441.png"));
-            this.mainMenu4 = ImageIO.read(Window.class.getResource("539.png"));
-            this.newspaper = ImageIO.read(Window.class.getResource("539.png"));
-            this.office = ImageIO.read(Window.class.getResource("39.png"));
-            this.cameraMinimap = ImageIO.read(Window.class.getResource("145.png"));
-            this.leftNone = ImageIO.read(Window.class.getResource("122.png"));
-            this.leftLight = ImageIO.read(Window.class.getResource("125.png"));
-            this.leftDoor = ImageIO.read(Window.class.getResource("124.png"));
-            this.leftBoth = ImageIO.read(Window.class.getResource("130.png"));
-            this.rightNone = ImageIO.read(Window.class.getResource("134.png"));
-            this.rightDoor = ImageIO.read(Window.class.getResource("135.png"));
-            this.rightLight = ImageIO.read(Window.class.getResource("131.png"));
-            this.rightBoth = ImageIO.read(Window.class.getResource("47.png"));
-            this.officeLeftLight = ImageIO.read(Window.class.getResource("58.png"));
-            this.officeRightLight = ImageIO.read(Window.class.getResource("127.png"));
-            this.officeBonnie = ImageIO.read(Window.class.getResource("225.png"));
-            this.officeChicka = ImageIO.read(Window.class.getResource("227.png"));
-            this.officePowerOut = ImageIO.read(Window.class.getResource("304.png"));
-            this.officePowerOutFreddy = ImageIO.read(Window.class.getResource("305.png"));
-            this.stage = ImageIO.read(Window.class.getResource("19.png"));
-            this.stageNoBonnie = ImageIO.read(Window.class.getResource("68.png"));
-            this.stageNoChicka = ImageIO.read(Window.class.getResource("223.png"));
-            this.stageNoBonnieChicka = ImageIO.read(Window.class.getResource("224.png"));
-            this.stageFreddyStare = ImageIO.read(Window.class.getResource("355.png"));
-            this.stageNone = ImageIO.read(Window.class.getResource("484.png"));
-            this.diningNone = ImageIO.read(Window.class.getResource("48.png"));
-            this.diningBonnieFar = ImageIO.read(Window.class.getResource("90.png"));
-            this.diningBonnieClose = ImageIO.read(Window.class.getResource("120.png"));
-            this.diningChickaFar = ImageIO.read(Window.class.getResource("215.png"));
-            this.diningChickaClose = ImageIO.read(Window.class.getResource("222.png"));
-            this.diningFreddy = ImageIO.read(Window.class.getResource("492.png"));
-            this.eastHallANone = ImageIO.read(Window.class.getResource("67.png"));
-            this.eastHallAChickaFar = ImageIO.read(Window.class.getResource("221.png"));
-            this.eastHallAChickaClose = ImageIO.read(Window.class.getResource("226.png"));
-            this.eastHallAFreddy = ImageIO.read(Window.class.getResource("487.png"));
-            this.eastHallBNone = ImageIO.read(Window.class.getResource("49.png"));
-            this.eastHallBChicka = ImageIO.read(Window.class.getResource("220.png"));
-            this.eastHallBFreddy = ImageIO.read(Window.class.getResource("486.png"));
-            this.backstageNone = ImageIO.read(Window.class.getResource("83.png"));
-            this.backstageFar = ImageIO.read(Window.class.getResource("205.png"));
-            this.backstageClose = ImageIO.read(Window.class.getResource("555.png"));
-            this.piratecoveStage0 = ImageIO.read(Window.class.getResource("66.png"));
-            this.piratecoveStage1 = ImageIO.read(Window.class.getResource("211.png"));
-            this.piratecoveStage2 = ImageIO.read(Window.class.getResource("338.png"));
-            this.piratecoveStage3 = ImageIO.read(Window.class.getResource("553.png"));
-            this.restroomsNone = ImageIO.read(Window.class.getResource("41.png"));
-            this.restroomsChickaFar = ImageIO.read(Window.class.getResource("217.png"));
-            this.restroomsChickaClose = ImageIO.read(Window.class.getResource("219.png"));
-            this.restroomsFreddy = ImageIO.read(Window.class.getResource("494.png"));
-            this.westHallANone = ImageIO.read(Window.class.getResource("44.png"));
-            this.westHallABonnie = ImageIO.read(Window.class.getResource("206.png"));
-            this.westHallBNone = ImageIO.read(Window.class.getResource("0.png"));
-            this.westHallBBonnie = ImageIO.read(Window.class.getResource("188.png"));
-            this.supplyclosetNone = ImageIO.read(Window.class.getResource("62.png"));
-            this.supplyclosetBonnie = ImageIO.read(Window.class.getResource("190.png"));
-            this.static1 = ImageIO.read(Window.class.getResource("12.png"));
-            this.static2 = ImageIO.read(Window.class.getResource("13.png"));
-            this.static3 = ImageIO.read(Window.class.getResource("14.png"));
-            this.static4 = ImageIO.read(Window.class.getResource("15.png"));
-            this.static5 = ImageIO.read(Window.class.getResource("16.png"));
-            this.static6 = ImageIO.read(Window.class.getResource("17.png"));
-            this.static7 = ImageIO.read(Window.class.getResource("18.png"));
-            this.static8 = ImageIO.read(Window.class.getResource("20.png"));
-            this.use1 = ImageIO.read(Window.class.getResource("212.png"));
-            this.use2 = ImageIO.read(Window.class.getResource("213.png"));
-            this.use3 = ImageIO.read(Window.class.getResource("214.png"));
-            this.use4 = ImageIO.read(Window.class.getResource("456.png"));
-            this.use5 = ImageIO.read(Window.class.getResource("455.png"));
-            this.use = ImageIO.read(Window.class.getResource("189.png"));
-            this.powerleft = ImageIO.read(Window.class.getResource("207.png"));
-            this.percentsign = ImageIO.read(Window.class.getResource("208.png"));
-            this.cameraBar = ImageIO.read(Window.class.getResource("420.png"));
-            this.foxrun1 = ImageIO.read(Window.class.getResource("244.png"));
-            this.foxrun2 = ImageIO.read(Window.class.getResource("245.png"));
-            this.foxrun3 = ImageIO.read(Window.class.getResource("246.png"));
-            this.foxrun4 = ImageIO.read(Window.class.getResource("247.png"));
-            this.foxrun5 = ImageIO.read(Window.class.getResource("248.png"));
-            this.foxrun6 = ImageIO.read(Window.class.getResource("250.png"));
-            this.foxrun7 = ImageIO.read(Window.class.getResource("280.png"));
-            this.foxrun8 = ImageIO.read(Window.class.getResource("282.png"));
-            this.foxrun9 = ImageIO.read(Window.class.getResource("283.png"));
-            this.foxrun10 = ImageIO.read(Window.class.getResource("284.png"));
-            this.foxrun11 = ImageIO.read(Window.class.getResource("285.png"));
-            this.foxrun12 = ImageIO.read(Window.class.getResource("286.png"));
-            this.foxrun13 = ImageIO.read(Window.class.getResource("287.png"));
-            this.foxrun14 = ImageIO.read(Window.class.getResource("288.png"));
-            this.foxrun15 = ImageIO.read(Window.class.getResource("289.png"));
-            this.foxrun16 = ImageIO.read(Window.class.getResource("290.png"));
-            this.foxrun17 = ImageIO.read(Window.class.getResource("292.png"));
-            this.foxrun18 = ImageIO.read(Window.class.getResource("302.png"));
-            this.foxrun19 = ImageIO.read(Window.class.getResource("306.png"));
-            this.foxrun20 = ImageIO.read(Window.class.getResource("327.png"));
-            this.foxrun21 = ImageIO.read(Window.class.getResource("329.png"));
-            this.foxrun22 = ImageIO.read(Window.class.getResource("330.png"));
-            this.foxrun23 = ImageIO.read(Window.class.getResource("331.png"));
-            this.foxrun24 = ImageIO.read(Window.class.getResource("332.png"));
-            this.foxrun25 = ImageIO.read(Window.class.getResource("333.png"));
-            this.foxrun26 = ImageIO.read(Window.class.getResource("334.png"));
-            this.foxrun27 = ImageIO.read(Window.class.getResource("335.png"));
-            this.foxrun28 = ImageIO.read(Window.class.getResource("336.png"));
-            this.foxrun29 = ImageIO.read(Window.class.getResource("337.png"));
-            this.foxrun30 = ImageIO.read(Window.class.getResource("339-241.png"));
-            this.foxrun31 = ImageIO.read(Window.class.getResource("340.png"));
-            this.powerout1 = ImageIO.read(Window.class.getResource("326.png"));
-            this.powerout2 = ImageIO.read(Window.class.getResource("307.png"));
-            this.powerout3 = ImageIO.read(Window.class.getResource("348.png"));
-            this.powerout4 = ImageIO.read(Window.class.getResource("308.png"));
-            this.powerout5 = ImageIO.read(Window.class.getResource("309.png"));
-            this.powerout5 = ImageIO.read(Window.class.getResource("310.png"));
-            this.powerout6 = ImageIO.read(Window.class.getResource("311.png"));
-            this.powerout7 = ImageIO.read(Window.class.getResource("312.png"));
-            this.powerout8 = ImageIO.read(Window.class.getResource("313.png"));
-            this.powerout9 = ImageIO.read(Window.class.getResource("314.png"));
-            this.powerout10 = ImageIO.read(Window.class.getResource("315.png"));
-            this.powerout11 = ImageIO.read(Window.class.getResource("316.png"));
-            this.powerout12 = ImageIO.read(Window.class.getResource("317.png"));
-            this.powerout13 = ImageIO.read(Window.class.getResource("318.png"));
-            this.powerout14 = ImageIO.read(Window.class.getResource("319.png"));
-            this.powerout15 = ImageIO.read(Window.class.getResource("320.png"));
-            this.powerout16 = ImageIO.read(Window.class.getResource("321.png"));
-            this.powerout17 = ImageIO.read(Window.class.getResource("322.png"));
-            this.powerout18 = ImageIO.read(Window.class.getResource("323.png"));
-            this.powerout19 = ImageIO.read(Window.class.getResource("324.png"));
-            this.powerout20 = ImageIO.read(Window.class.getResource("325.png"));
-            this.bonnie1 = ImageIO.read(Window.class.getResource("291.png"));
-            this.bonnie2 = ImageIO.read(Window.class.getResource("293.png"));
-            this.bonnie3 = ImageIO.read(Window.class.getResource("294.png"));
-            this.bonnie4 = ImageIO.read(Window.class.getResource("295.png"));
-            this.bonnie5 = ImageIO.read(Window.class.getResource("296.png"));
-            this.bonnie6 = ImageIO.read(Window.class.getResource("297.png"));
-            this.bonnie7 = ImageIO.read(Window.class.getResource("298.png"));
-            this.bonnie8 = ImageIO.read(Window.class.getResource("299.png"));
-            this.bonnie9 = ImageIO.read(Window.class.getResource("300.png"));
-            this.bonnie10 = ImageIO.read(Window.class.getResource("301.png"));
-            this.bonnie11 = ImageIO.read(Window.class.getResource("303.png"));
-            this.chicka1 = ImageIO.read(Window.class.getResource("65.png"));
-            this.chicka2 = ImageIO.read(Window.class.getResource("69.png"));
-            this.chicka3 = ImageIO.read(Window.class.getResource("216.png"));
-            this.chicka4 = ImageIO.read(Window.class.getResource("228.png"));
-            this.chicka5 = ImageIO.read(Window.class.getResource("229.png"));
-            this.chicka6 = ImageIO.read(Window.class.getResource("230.png"));
-            this.chicka7 = ImageIO.read(Window.class.getResource("231.png"));
-            this.chicka8 = ImageIO.read(Window.class.getResource("232.png"));
-            this.chicka9 = ImageIO.read(Window.class.getResource("233.png"));
-            this.chicka10 = ImageIO.read(Window.class.getResource("234.png"));
-            this.chicka11 = ImageIO.read(Window.class.getResource("235.png"));
-            this.chicka12 = ImageIO.read(Window.class.getResource("236.png"));
-            this.chicka13 = ImageIO.read(Window.class.getResource("237.png"));
-            this.chicka14 = ImageIO.read(Window.class.getResource("239.png"));
-            this.chicka15 = ImageIO.read(Window.class.getResource("279.png"));
-            this.chicka16 = ImageIO.read(Window.class.getResource("281.png"));
-            this.foxy1 = ImageIO.read(Window.class.getResource("242.png"));
-            this.foxy2 = ImageIO.read(Window.class.getResource("243.png"));
-            this.foxy3 = ImageIO.read(Window.class.getResource("396.png"));
-            this.foxy4 = ImageIO.read(Window.class.getResource("397.png"));
-            this.foxy5 = ImageIO.read(Window.class.getResource("398.png"));
-            this.foxy6 = ImageIO.read(Window.class.getResource("399.png"));
-            this.foxy7 = ImageIO.read(Window.class.getResource("400.png"));
-            this.foxy8 = ImageIO.read(Window.class.getResource("401.png"));
-            this.foxy9 = ImageIO.read(Window.class.getResource("402.png"));
-            this.foxy10 = ImageIO.read(Window.class.getResource("403.png"));
-            this.foxy11 = ImageIO.read(Window.class.getResource("404.png"));
-            this.foxy12 = ImageIO.read(Window.class.getResource("405.png"));
-            this.foxy13 = ImageIO.read(Window.class.getResource("406.png"));
-            this.foxy14 = ImageIO.read(Window.class.getResource("407.png"));
-            this.foxy15 = ImageIO.read(Window.class.getResource("408.png"));
-            this.foxy16 = ImageIO.read(Window.class.getResource("409.png"));
-            this.foxy17 = ImageIO.read(Window.class.getResource("410.png"));
-            this.foxy18 = ImageIO.read(Window.class.getResource("411.png"));
-            this.foxy19 = ImageIO.read(Window.class.getResource("412.png"));
-            this.freddy1 = ImageIO.read(Window.class.getResource("489.png"));
-            this.freddy2 = ImageIO.read(Window.class.getResource("490.png"));
-            this.freddy3 = ImageIO.read(Window.class.getResource("491.png"));
-            this.freddy4 = ImageIO.read(Window.class.getResource("493.png"));
-            this.freddy5 = ImageIO.read(Window.class.getResource("495.png"));
-            this.freddy6 = ImageIO.read(Window.class.getResource("496.png"));
-            this.freddy7 = ImageIO.read(Window.class.getResource("497.png"));
-            this.freddy8 = ImageIO.read(Window.class.getResource("498.png"));
-            this.freddy9 = ImageIO.read(Window.class.getResource("499.png"));
-            this.freddy10 = ImageIO.read(Window.class.getResource("500.png"));
-            this.freddy11 = ImageIO.read(Window.class.getResource("501.png"));
-            this.freddy12 = ImageIO.read(Window.class.getResource("502.png"));
-            this.freddy13 = ImageIO.read(Window.class.getResource("503.png"));
-            this.freddy14 = ImageIO.read(Window.class.getResource("504.png"));
-            this.freddy15 = ImageIO.read(Window.class.getResource("505.png"));
-            this.freddy16 = ImageIO.read(Window.class.getResource("506.png"));
-            this.freddy17 = ImageIO.read(Window.class.getResource("507.png"));
-            this.freddy18 = ImageIO.read(Window.class.getResource("508.png"));
-            this.freddy19 = ImageIO.read(Window.class.getResource("509.png"));
-            this.freddy20 = ImageIO.read(Window.class.getResource("510.png"));
-            this.freddy21 = ImageIO.read(Window.class.getResource("511.png"));
-            this.freddy22 = ImageIO.read(Window.class.getResource("512.png"));
-            this.freddy23 = ImageIO.read(Window.class.getResource("513.png"));
-            this.freddy24 = ImageIO.read(Window.class.getResource("514.png"));
-            this.freddy25 = ImageIO.read(Window.class.getResource("515.png"));
-            this.freddy26 = ImageIO.read(Window.class.getResource("516.png"));
-            this.freddy27 = ImageIO.read(Window.class.getResource("517.png"));
-            this.freddy28 = ImageIO.read(Window.class.getResource("518.png"));
-        } catch (IOException var2) {
-            var2.printStackTrace();
+            loading = ImageIO.read(new URL("file:///C://FNAL//assets/jump.jpg"));
+            lose = ImageIO.read(new URL("file:///C://FNAL//assets/Lose.png"));
+            win = ImageIO.read(new URL("file:///C://FNAL//assets/StandardWin.png"));
+            zero = ImageIO.read(new URL("file:///C://FNAL//assets/zero.png"));
+            ten = ImageIO.read(new URL("file:///C://FNAL//assets/ten.png"));
+            twenty = ImageIO.read(new URL("file:///C://FNAL//assets/twenty.png"));
+            thirty = ImageIO.read(new URL("file:///C://FNAL//assets/thirty.png"));
+            forty = ImageIO.read(new URL("file:///C://FNAL//assets/forty.png"));
+            fifty = ImageIO.read(new URL("file:///C://FNAL//assets/fifty.png"));
+            sixty = ImageIO.read(new URL("file:///C://FNAL//assets/sixty.png"));
+            seventy = ImageIO.read(new URL("file:///C://FNAL//assets/seventy.png"));
+            eighty = ImageIO.read(new URL("file:///C://FNAL//assets/eighty.png"));
+            ninety = ImageIO.read(new URL("file:///C://FNAL//assets/ninety.png"));
+            onehundred = ImageIO.read(new URL("file:///C://FNAL//assets/onehundred.png"));
+            supplycloset = ImageIO.read(new URL("file:///C://FNAL//assets/50.png"));
+            showstage = ImageIO.read(new URL("file:///C://FNAL//assets/54.png"));
+            piratecove = ImageIO.read(new URL("file:///C://FNAL//assets/70.png"));
+            backstage = ImageIO.read(new URL("file:///C://FNAL//assets/71.png"));
+            diningarea = ImageIO.read(new URL("file:///C://FNAL//assets/72.png"));
+            westhall = ImageIO.read(new URL("file:///C://FNAL//assets/74.png"));
+            ehallcorner = ImageIO.read(new URL("file:///C://FNAL//assets/75.png"));
+            whallcorner = ImageIO.read(new URL("file:///C://FNAL//assets/76.png"));
+            restrooms = ImageIO.read(new URL("file:///C://FNAL//assets/77.png"));
+            easthall = ImageIO.read(new URL("file:///C://FNAL//assets/79.png"));
+            blank = ImageIO.read(new URL("file:///C://FNAL//assets/blank.png"));
+            leftdoor1 = ImageIO.read(new URL("file:///C://FNAL//assets/89.png"));
+            leftdoor2 = ImageIO.read(new URL("file:///C://FNAL//assets/91.png"));
+            leftdoor3 = ImageIO.read(new URL("file:///C://FNAL//assets/92.png"));
+            leftdoor4 = ImageIO.read(new URL("file:///C://FNAL//assets/93.png"));
+            leftdoor5 = ImageIO.read(new URL("file:///C://FNAL//assets/94.png"));
+            leftdoor6 = ImageIO.read(new URL("file:///C://FNAL//assets/95.png"));
+            leftdoor7 = ImageIO.read(new URL("file:///C://FNAL//assets/96.png"));
+            leftdoor8 = ImageIO.read(new URL("file:///C://FNAL//assets/97.png"));
+            leftdoor9 = ImageIO.read(new URL("file:///C://FNAL//assets/98.png"));
+            leftdoor10 = ImageIO.read(new URL("file:///C://FNAL//assets/99.png"));
+            leftdoor11 = ImageIO.read(new URL("file:///C://FNAL//assets/100.png"));
+            leftdoor12 = ImageIO.read(new URL("file:///C://FNAL//assets/101.png"));
+            leftdoor13 = ImageIO.read(new URL("file:///C://FNAL//assets/102.png"));
+            rightdoor1 = ImageIO.read(new URL("file:///C://FNAL//assets/106.png"));
+            rightdoor2 = ImageIO.read(new URL("file:///C://FNAL//assets/107.png"));
+            rightdoor3 = ImageIO.read(new URL("file:///C://FNAL//assets/108.png"));
+            rightdoor4 = ImageIO.read(new URL("file:///C://FNAL//assets/109.png"));
+            rightdoor5 = ImageIO.read(new URL("file:///C://FNAL//assets/110.png"));
+            rightdoor6 = ImageIO.read(new URL("file:///C://FNAL//assets/111.png"));
+            rightdoor7 = ImageIO.read(new URL("file:///C://FNAL//assets/112.png"));
+            rightdoor8 = ImageIO.read(new URL("file:///C://FNAL//assets/113.png"));
+            rightdoor9 = ImageIO.read(new URL("file:///C://FNAL//assets/114.png"));
+            rightdoor10 = ImageIO.read(new URL("file:///C://FNAL//assets/115.png"));
+            rightdoor11 = ImageIO.read(new URL("file:///C://FNAL//assets/116.png"));
+            rightdoor12 = ImageIO.read(new URL("file:///C://FNAL//assets/117.png"));
+            rightdoor13 = ImageIO.read(new URL("file:///C://FNAL//assets/118.png"));
+            A1 = ImageIO.read(new URL("file:///C://FNAL//assets/170.png"));
+            B1 = ImageIO.read(new URL("file:///C://FNAL//assets/171.png"));
+            C1 = ImageIO.read(new URL("file:///C://FNAL//assets/177.png"));
+            A2 = ImageIO.read(new URL("file:///C://FNAL//assets/172.png"));
+            B2 = ImageIO.read(new URL("file:///C://FNAL//assets/165.png"));
+            Three = ImageIO.read(new URL("file:///C://FNAL//assets/168.png"));
+            A4 = ImageIO.read(new URL("file:///C://FNAL//assets/169.png"));
+            B4 = ImageIO.read(new URL("file:///C://FNAL//assets/173.png"));
+            Five = ImageIO.read(new URL("file:///C://FNAL//assets/174.png"));
+            Six = ImageIO.read(new URL("file:///C://FNAL//assets/175.png"));
+            fiveNightsLogo = ImageIO.read(new URL("file:///C://FNAL//assets/444.png"));
+            newGameLogo = ImageIO.read(new URL("file:///C://FNAL//assets/448.png"));
+            arrows = ImageIO.read(new URL("file:///C://FNAL//assets/450.png"));
+            mainMenu = ImageIO.read(new URL("file:///C://FNAL//assets/431.png"));
+            name = ImageIO.read(new URL("file:///C://FNAL//assets/433.png"));
+            mainMenu2 = ImageIO.read(new URL("file:///C://FNAL//assets/440.png"));
+            mainMenu3 = ImageIO.read(new URL("file:///C://FNAL//assets/441.png"));
+            mainMenu4 = ImageIO.read(new URL("file:///C://FNAL//assets/539.png"));
+            newspaper = ImageIO.read(new URL("file:///C://FNAL//assets/539.png"));
+            office = ImageIO.read(new URL("file:///C://FNAL//assets/39.png"));
+            cameraMinimap = ImageIO.read(new URL("file:///C://FNAL//assets/145.png"));
+            leftNone = ImageIO.read(new URL("file:///C://FNAL//assets/122.png"));
+            leftLight = ImageIO.read(new URL("file:///C://FNAL//assets/125.png"));
+            leftDoor = ImageIO.read(new URL("file:///C://FNAL//assets/124.png"));
+            leftBoth = ImageIO.read(new URL("file:///C://FNAL//assets/130.png"));
+            rightNone = ImageIO.read(new URL("file:///C://FNAL//assets/134.png"));
+            rightDoor = ImageIO.read(new URL("file:///C://FNAL//assets/135.png"));
+            rightLight = ImageIO.read(new URL("file:///C://FNAL//assets/131.png"));
+            rightBoth = ImageIO.read(new URL("file:///C://FNAL//assets/47.png"));
+            officeLeftLight = ImageIO.read(new URL("file:///C://FNAL//assets/58.png"));
+            officeRightLight = ImageIO
+                    .read(new URL("file:///C://FNAL//assets/127.png"));
+            officeBonnie = ImageIO.read(new URL("file:///C://FNAL//assets/225.png"));
+            officeChicka = ImageIO.read(new URL("file:///C://FNAL//assets/227.png"));
+            officePowerOut = ImageIO.read(new URL("file:///C://FNAL//assets/304.png"));
+            officePowerOutFreddy = ImageIO.read(new URL("file:///C://FNAL//assets/305.png"));
+            stage = ImageIO.read(new URL("file:///C://FNAL//assets/19.png"));
+            stageNoBonnie = ImageIO.read(new URL("file:///C://FNAL//assets/68.png"));
+            stageNoChicka = ImageIO.read(new URL("file:///C://FNAL//assets/223.png"));
+            stageNoBonnieChicka = ImageIO.read(new URL("file:///C://FNAL//assets/224.png"));
+            stageFreddyStare = ImageIO
+                    .read(new URL("file:///C://FNAL//assets/355.png"));
+            stageNone = ImageIO.read(new URL("file:///C://FNAL//assets/484.png"));
+            diningNone = ImageIO.read(new URL("file:///C://FNAL//assets/48.png"));
+            diningBonnieFar = ImageIO.read(new URL("file:///C://FNAL//assets/90.png"));
+            diningBonnieClose = ImageIO.read(new URL("file:///C://FNAL//assets/120.png"));
+            diningChickaFar = ImageIO.read(new URL("file:///C://FNAL//assets/215.png"));
+            diningChickaClose = ImageIO.read(new URL("file:///C://FNAL//assets/222.png"));
+            diningFreddy = ImageIO.read(new URL("file:///C://FNAL//assets/492.png"));
+            eastHallANone = ImageIO.read(new URL("file:///C://FNAL//assets/67.png"));
+            eastHallAChickaFar = ImageIO.read(new URL("file:///C://FNAL//assets/221.png"));
+            eastHallAChickaClose = ImageIO.read(new URL("file:///C://FNAL//assets/226.png"));
+            eastHallAFreddy = ImageIO.read(new URL("file:///C://FNAL//assets/487.png"));
+            eastHallBNone = ImageIO.read(new URL("file:///C://FNAL//assets/49.png"));
+            eastHallBChicka = ImageIO.read(new URL("file:///C://FNAL//assets/220.png"));
+            eastHallBFreddy = ImageIO.read(new URL("file:///C://FNAL//assets/486.png"));
+            backstageNone = ImageIO.read(new URL("file:///C://FNAL//assets/83.png"));
+            backstageFar = ImageIO.read(new URL("file:///C://FNAL//assets/205.png"));
+            backstageClose = ImageIO.read(new URL("file:///C://FNAL//assets/555.png"));
+            piratecoveStage0 = ImageIO.read(new URL("file:///C://FNAL//assets/66.png"));
+            piratecoveStage1 = ImageIO
+                    .read(new URL("file:///C://FNAL//assets/211.png"));
+            piratecoveStage2 = ImageIO
+                    .read(new URL("file:///C://FNAL//assets/338.png"));
+            piratecoveStage3 = ImageIO
+                    .read(new URL("file:///C://FNAL//assets/553.png"));
+            restroomsNone = ImageIO.read(new URL("file:///C://FNAL//assets/41.png"));
+            restroomsChickaFar = ImageIO.read(new URL("file:///C://FNAL//assets/217.png"));
+            restroomsChickaClose = ImageIO.read(new URL("file:///C://FNAL//assets/219.png"));
+            restroomsFreddy = ImageIO.read(new URL("file:///C://FNAL//assets/494.png"));
+            westHallANone = ImageIO.read(new URL("file:///C://FNAL//assets/44.png"));
+            westHallABonnie = ImageIO.read(new URL("file:///C://FNAL//assets/206.png"));
+            westHallBNone = ImageIO.read(new URL("file:///C://FNAL//assets/0.png"));
+            westHallBBonnie = ImageIO.read(new URL("file:///C://FNAL//assets/188.png"));
+            supplyclosetNone = ImageIO.read(new URL("file:///C://FNAL//assets/62.png"));
+            supplyclosetBonnie = ImageIO.read(new URL("file:///C://FNAL//assets/190.png"));
+            static1 = ImageIO.read(new URL("file:///C://FNAL//assets/12.png"));
+            static2 = ImageIO.read(new URL("file:///C://FNAL//assets/13.png"));
+            static3 = ImageIO.read(new URL("file:///C://FNAL//assets/14.png"));
+            static4 = ImageIO.read(new URL("file:///C://FNAL//assets/15.png"));
+            static5 = ImageIO.read(new URL("file:///C://FNAL//assets/16.png"));
+            static6 = ImageIO.read(new URL("file:///C://FNAL//assets/17.png"));
+            static7 = ImageIO.read(new URL("file:///C://FNAL//assets/18.png"));
+            static8 = ImageIO.read(new URL("file:///C://FNAL//assets/20.png"));
+            use1 = ImageIO.read(new URL("file:///C://FNAL//assets/212.png"));
+            use2 = ImageIO.read(new URL("file:///C://FNAL//assets/213.png"));
+            use3 = ImageIO.read(new URL("file:///C://FNAL//assets/214.png"));
+            use4 = ImageIO.read(new URL("file:///C://FNAL//assets/456.png"));
+            use5 = ImageIO.read(new URL("file:///C://FNAL//assets/455.png"));
+            use = ImageIO.read(new URL("file:///C://FNAL//assets/189.png"));
+            powerleft = ImageIO.read(new URL("file:///C://FNAL//assets/207.png"));
+            percentsign = ImageIO.read(new URL("file:///C://FNAL//assets/208.png"));
+            cameraBar = ImageIO.read(new URL("file:///C://FNAL//assets/420.png"));
+            foxrun1 = ImageIO.read(new URL("file:///C://FNAL//assets/244.png"));
+            foxrun2 = ImageIO.read(new URL("file:///C://FNAL//assets/245.png"));
+            foxrun3 = ImageIO.read(new URL("file:///C://FNAL//assets/246.png"));
+            foxrun4 = ImageIO.read(new URL("file:///C://FNAL//assets/247.png"));
+            foxrun5 = ImageIO.read(new URL("file:///C://FNAL//assets/248.png"));
+            foxrun6 = ImageIO.read(new URL("file:///C://FNAL//assets/250.png"));
+            foxrun7 = ImageIO.read(new URL("file:///C://FNAL//assets/280.png"));
+            foxrun8 = ImageIO.read(new URL("file:///C://FNAL//assets/282.png"));
+            foxrun9 = ImageIO.read(new URL("file:///C://FNAL//assets/283.png"));
+            foxrun10 = ImageIO.read(new URL("file:///C://FNAL//assets/284.png"));
+            foxrun11 = ImageIO.read(new URL("file:///C://FNAL//assets/285.png"));
+            foxrun12 = ImageIO.read(new URL("file:///C://FNAL//assets/286.png"));
+            foxrun13 = ImageIO.read(new URL("file:///C://FNAL//assets/287.png"));
+            foxrun14 = ImageIO.read(new URL("file:///C://FNAL//assets/288.png"));
+            foxrun15 = ImageIO.read(new URL("file:///C://FNAL//assets/289.png"));
+            foxrun16 = ImageIO.read(new URL("file:///C://FNAL//assets/290.png"));
+            foxrun17 = ImageIO.read(new URL("file:///C://FNAL//assets/292.png"));
+            foxrun18 = ImageIO.read(new URL("file:///C://FNAL//assets/302.png"));
+            foxrun19 = ImageIO.read(new URL("file:///C://FNAL//assets/306.png"));
+            foxrun20 = ImageIO.read(new URL("file:///C://FNAL//assets/327.png"));
+            foxrun21 = ImageIO.read(new URL("file:///C://FNAL//assets/329.png"));
+            foxrun22 = ImageIO.read(new URL("file:///C://FNAL//assets/330.png"));
+            foxrun23 = ImageIO.read(new URL("file:///C://FNAL//assets/331.png"));
+            foxrun24 = ImageIO.read(new URL("file:///C://FNAL//assets/332.png"));
+            foxrun25 = ImageIO.read(new URL("file:///C://FNAL//assets/333.png"));
+            foxrun26 = ImageIO.read(new URL("file:///C://FNAL//assets/334.png"));
+            foxrun27 = ImageIO.read(new URL("file:///C://FNAL//assets/335.png"));
+            foxrun28 = ImageIO.read(new URL("file:///C://FNAL//assets/336.png"));
+            foxrun29 = ImageIO.read(new URL("file:///C://FNAL//assets/337.png"));
+            foxrun30 = ImageIO.read(new URL("file:///C://FNAL//assets/339-241.png"));
+            foxrun31 = ImageIO.read(new URL("file:///C://FNAL//assets/340.png"));
+            powerout1 = ImageIO.read(new URL("file:///C://FNAL//assets/326.png"));
+            powerout2 = ImageIO.read(new URL("file:///C://FNAL//assets/307.png"));
+            powerout3 = ImageIO.read(new URL("file:///C://FNAL//assets/348.png"));
+            powerout4 = ImageIO.read(new URL("file:///C://FNAL//assets/308.png"));
+            powerout5 = ImageIO.read(new URL("file:///C://FNAL//assets/309.png"));
+            powerout5 = ImageIO.read(new URL("file:///C://FNAL//assets/310.png"));
+            powerout6 = ImageIO.read(new URL("file:///C://FNAL//assets/311.png"));
+            powerout7 = ImageIO.read(new URL("file:///C://FNAL//assets/312.png"));
+            powerout8 = ImageIO.read(new URL("file:///C://FNAL//assets/313.png"));
+            powerout9 = ImageIO.read(new URL("file:///C://FNAL//assets/314.png"));
+            powerout10 = ImageIO.read(new URL("file:///C://FNAL//assets/315.png"));
+            powerout11 = ImageIO.read(new URL("file:///C://FNAL//assets/316.png"));
+            powerout12 = ImageIO.read(new URL("file:///C://FNAL//assets/317.png"));
+            powerout13 = ImageIO.read(new URL("file:///C://FNAL//assets/318.png"));
+            powerout14 = ImageIO.read(new URL("file:///C://FNAL//assets/319.png"));
+            powerout15 = ImageIO.read(new URL("file:///C://FNAL//assets/320.png"));
+            powerout16 = ImageIO.read(new URL("file:///C://FNAL//assets/321.png"));
+            powerout17 = ImageIO.read(new URL("file:///C://FNAL//assets/322.png"));
+            powerout18 = ImageIO.read(new URL("file:///C://FNAL//assets/323.png"));
+            powerout19 = ImageIO.read(new URL("file:///C://FNAL//assets/324.png"));
+            powerout20 = ImageIO.read(new URL("file:///C://FNAL//assets/325.png"));
+            bonnie1 = ImageIO.read(new URL("file:///C://FNAL//assets/291.png"));
+            bonnie2 = ImageIO.read(new URL("file:///C://FNAL//assets/293.png"));
+            bonnie3 = ImageIO.read(new URL("file:///C://FNAL//assets/294.png"));
+            bonnie4 = ImageIO.read(new URL("file:///C://FNAL//assets/295.png"));
+            bonnie5 = ImageIO.read(new URL("file:///C://FNAL//assets/296.png"));
+            bonnie6 = ImageIO.read(new URL("file:///C://FNAL//assets/297.png"));
+            bonnie7 = ImageIO.read(new URL("file:///C://FNAL//assets/298.png"));
+            bonnie8 = ImageIO.read(new URL("file:///C://FNAL//assets/299.png"));
+            bonnie9 = ImageIO.read(new URL("file:///C://FNAL//assets/300.png"));
+            bonnie10 = ImageIO.read(new URL("file:///C://FNAL//assets/301.png"));
+            bonnie11 = ImageIO.read(new URL("file:///C://FNAL//assets/303.png"));
+            chicka1 = ImageIO.read(new URL("file:///C://FNAL//assets/65.png"));
+            chicka2 = ImageIO.read(new URL("file:///C://FNAL//assets/69.png"));
+            chicka3 = ImageIO.read(new URL("file:///C://FNAL//assets/216.png"));
+            chicka4 = ImageIO.read(new URL("file:///C://FNAL//assets/228.png"));
+            chicka5 = ImageIO.read(new URL("file:///C://FNAL//assets/229.png"));
+            chicka6 = ImageIO.read(new URL("file:///C://FNAL//assets/230.png"));
+            chicka7 = ImageIO.read(new URL("file:///C://FNAL//assets/231.png"));
+            chicka8 = ImageIO.read(new URL("file:///C://FNAL//assets/232.png"));
+            chicka9 = ImageIO.read(new URL("file:///C://FNAL//assets/233.png"));
+            chicka10 = ImageIO.read(new URL("file:///C://FNAL//assets/234.png"));
+            chicka11 = ImageIO.read(new URL("file:///C://FNAL//assets/235.png"));
+            chicka12 = ImageIO.read(new URL("file:///C://FNAL//assets/236.png"));
+            chicka13 = ImageIO.read(new URL("file:///C://FNAL//assets/237.png"));
+            chicka14 = ImageIO.read(new URL("file:///C://FNAL//assets/239.png"));
+            chicka15 = ImageIO.read(new URL("file:///C://FNAL//assets/279.png"));
+            chicka16 = ImageIO.read(new URL("file:///C://FNAL//assets/281.png"));
+            foxy1 = ImageIO.read(new URL("file:///C://FNAL//assets/242.png"));
+            foxy2 = ImageIO.read(new URL("file:///C://FNAL//assets/243.png"));
+            foxy3 = ImageIO.read(new URL("file:///C://FNAL//assets/396.png"));
+            foxy4 = ImageIO.read(new URL("file:///C://FNAL//assets/397.png"));
+            foxy5 = ImageIO.read(new URL("file:///C://FNAL//assets/398.png"));
+            foxy6 = ImageIO.read(new URL("file:///C://FNAL//assets/399.png"));
+            foxy7 = ImageIO.read(new URL("file:///C://FNAL//assets/400.png"));
+            foxy8 = ImageIO.read(new URL("file:///C://FNAL//assets/401.png"));
+            foxy9 = ImageIO.read(new URL("file:///C://FNAL//assets/402.png"));
+            foxy10 = ImageIO.read(new URL("file:///C://FNAL//assets/403.png"));
+            foxy11 = ImageIO.read(new URL("file:///C://FNAL//assets/404.png"));
+            foxy12 = ImageIO.read(new URL("file:///C://FNAL//assets/405.png"));
+            foxy13 = ImageIO.read(new URL("file:///C://FNAL//assets/406.png"));
+            foxy14 = ImageIO.read(new URL("file:///C://FNAL//assets/407.png"));
+            foxy15 = ImageIO.read(new URL("file:///C://FNAL//assets/408.png"));
+            foxy16 = ImageIO.read(new URL("file:///C://FNAL//assets/409.png"));
+            foxy17 = ImageIO.read(new URL("file:///C://FNAL//assets/410.png"));
+            foxy18 = ImageIO.read(new URL("file:///C://FNAL//assets/411.png"));
+            foxy19 = ImageIO.read(new URL("file:///C://FNAL//assets/412.png"));
+            freddy1 = ImageIO.read(new URL("file:///C://FNAL//assets/489.png"));
+            freddy2 = ImageIO.read(new URL("file:///C://FNAL//assets/490.png"));
+            freddy3 = ImageIO.read(new URL("file:///C://FNAL//assets/491.png"));
+            freddy4 = ImageIO.read(new URL("file:///C://FNAL//assets/493.png"));
+            freddy5 = ImageIO.read(new URL("file:///C://FNAL//assets/495.png"));
+            freddy6 = ImageIO.read(new URL("file:///C://FNAL//assets/496.png"));
+            freddy7 = ImageIO.read(new URL("file:///C://FNAL//assets/497.png"));
+            freddy8 = ImageIO.read(new URL("file:///C://FNAL//assets/498.png"));
+            freddy9 = ImageIO.read(new URL("file:///C://FNAL//assets/499.png"));
+            freddy10 = ImageIO.read(new URL("file:///C://FNAL//assets/500.png"));
+            freddy11 = ImageIO.read(new URL("file:///C://FNAL//assets/501.png"));
+            freddy12 = ImageIO.read(new URL("file:///C://FNAL//assets/502.png"));
+            freddy13 = ImageIO.read(new URL("file:///C://FNAL//assets/503.png"));
+            freddy14 = ImageIO.read(new URL("file:///C://FNAL//assets/504.png"));
+            freddy15 = ImageIO.read(new URL("file:///C://FNAL//assets/505.png"));
+            freddy16 = ImageIO.read(new URL("file:///C://FNAL//assets/506.png"));
+            freddy17 = ImageIO.read(new URL("file:///C://FNAL//assets/507.png"));
+            freddy18 = ImageIO.read(new URL("file:///C://FNAL//assets/508.png"));
+            freddy19 = ImageIO.read(new URL("file:///C://FNAL//assets/509.png"));
+            freddy20 = ImageIO.read(new URL("file:///C://FNAL//assets/510.png"));
+            freddy21 = ImageIO.read(new URL("file:///C://FNAL//assets/511.png"));
+            freddy22 = ImageIO.read(new URL("file:///C://FNAL//assets/512.png"));
+            freddy23 = ImageIO.read(new URL("file:///C://FNAL//assets/513.png"));
+            freddy24 = ImageIO.read(new URL("file:///C://FNAL//assets/514.png"));
+            freddy25 = ImageIO.read(new URL("file:///C://FNAL//assets/515.png"));
+            freddy26 = ImageIO.read(new URL("file:///C://FNAL//assets/516.png"));
+            freddy27 = ImageIO.read(new URL("file:///C://FNAL//assets/517.png"));
+            freddy28 = ImageIO.read(new URL("file:///C://FNAL//assets/518.png"));
+
+
+        } catch (IOException a) {
+            a.printStackTrace();
         }
 
         ifloading = false;
+
     }
 
     public void paint(Graphics g) {
-        this.Image = this.createImage(this.getWidth(), this.getHeight());
-        this.Graphic = this.Image.getGraphics();
-        this.paintComponent(this.Graphic);
-        g.drawImage(this.Image, 0, 0, this);
+        Image = createImage(getWidth(), getHeight());
+        Graphic = Image.getGraphics();
+        paintComponent(Graphic);
+        g.drawImage(Image, 0, 0, this);
     }
 
     public void paintComponent(Graphics g) {
-        g.fillRect(0, 0, this.getWidth(), this.getHeight());
-        if (ifloading) {
-            g.drawImage(this.loading, 370, 200, this);
-        } else if (!startGame) {
-            if (!mainmenumusicplaying) {
-                this.main1.play();
-                this.ambiance1.play();
-                mainmenumusicplaying = true;
-            }
-
-            this.ambiance2.stop();
-            this.ambiance1.stop();
-            needToMove = false;
-            int random = (int)(Math.random() * 20.0);
-            if (random > 18) {
-                random = (int)(Math.random() * 2.0);
-                switch (random) {
-                    case 1:
-                        g.drawImage(this.mainMenu2, 0, 0, this);
-                        break;
-                    case 2:
-                        g.drawImage(this.mainMenu3, 0, 0, this);
-                }
-            } else {
-                g.drawImage(this.mainMenu, 0, 0, this);
-            }
-
-            g.drawImage(this.fiveNightsLogo, 100, 50, this);
-            g.drawImage(this.newGameLogo, 100, 400, this);
-            g.drawImage(this.arrows, 30, 405, this);
-            g.drawImage(this.name, 1050, 700, this);
-            if (startClicked) {
-                g.drawImage(this.newspaper, 0, 0, this);
-            }
+        g.fillRect(0, 0, getWidth(), getHeight());
+        if (ifloading == true) {
+            g.drawImage(loading, 370, 200, this);
         } else {
-            this.main1.stop();
-            this.ambiance1.stop();
-            mainmenumusicplaying = false;
-            if (!gamemusicplaying) {
-                this.ambiance2.play();
-                this.ambiance1.play();
-                gamemusicplaying = true;
-            }
-
-            if (Office.monitorUp) {
-                if (cameraLocation.equals("Show Stage")) {
-                    needToMove = true;
-                    if (Bonnie.isInRoom() != 0 && Chicka.isInRoom() != 0 && Freddy.isInRoom() != 0) {
-                        g.drawImage(this.stageNone, cameraPosition - 200, 0, this);
-                    }
-
-                    if (Bonnie.isInRoom() == 0 && Chicka.isInRoom() == 0 && Freddy.isInRoom() == 0) {
-                        g.drawImage(this.stage, cameraPosition - 200, 0, this);
-                    }
-
-                    if (Bonnie.isInRoom() != 0 && Chicka.isInRoom() == 0 && Freddy.isInRoom() == 0) {
-                        g.drawImage(this.stageNoBonnie, cameraPosition - 200, 0, this);
-                    }
-
-                    if (Bonnie.isInRoom() == 0 && Chicka.isInRoom() != 0 && Freddy.isInRoom() == 0) {
-                        g.drawImage(this.stageNoChicka, cameraPosition - 200, 0, this);
-                    }
-
-                    if (Bonnie.isInRoom() != 0 && Chicka.isInRoom() != 0 && Freddy.isInRoom() == 0) {
-                        g.drawImage(this.stageNoBonnieChicka, cameraPosition - 200, 0, this);
-                    }
-
-                    g.drawImage(makeColorTransparent(this.showstage, Color.black), 800, 290, this);
+            if (startGame == false) {
+                if(mainmenumusicplaying == false) {
+                    main1.play();
+                    ambiance1.play();
+                    mainmenumusicplaying = true;
                 }
-
-                if (cameraLocation.equals("Dining Area")) {
-                    needToMove = true;
-                    if (Bonnie.isInRoom() != 1 && Chicka.isInRoom() != 1 && Freddy.isInRoom() != 1 && Bonnie.isInRoom() != 2 && Chicka.isInRoom() != 2) {
-                        g.drawImage(this.diningNone, cameraPosition - 200, 0, this);
-                    }
-
-                    if (Bonnie.isInRoom() == 1 && Chicka.isInRoom() != 1 && Freddy.isInRoom() != 1 && Bonnie.isInRoom() != 2 && Chicka.isInRoom() != 2) {
-                        g.drawImage(this.diningBonnieFar, cameraPosition - 200, 0, this);
-                    }
-
-                    if (Bonnie.isInRoom() != 1 && Chicka.isInRoom() != 1 && Freddy.isInRoom() != 1 && Bonnie.isInRoom() != 1 && Chicka.isInRoom() == 2) {
-                        g.drawImage(this.diningChickaClose, cameraPosition - 200, 0, this);
-                    }
-
-                    if (Bonnie.isInRoom() != 1 && Chicka.isInRoom() == 1 && Freddy.isInRoom() != 1 && Bonnie.isInRoom() != 2 && Chicka.isInRoom() != 2) {
-                        g.drawImage(this.diningChickaFar, cameraPosition - 200, 0, this);
-                    }
-
-                    if (Bonnie.isInRoom() != 1 && Chicka.isInRoom() != 1 && Freddy.isInRoom() != 1 && Bonnie.isInRoom() == 2 && Chicka.isInRoom() != 2) {
-                        g.drawImage(this.diningChickaClose, cameraPosition - 200, 0, this);
-                    }
-
-                    if (Bonnie.isInRoom() != 1 && Chicka.isInRoom() != 1 && Freddy.isInRoom() == 1 && Bonnie.isInRoom() != 2 && Chicka.isInRoom() != 2) {
-                        g.drawImage(this.diningFreddy, cameraPosition - 200, 0, this);
-                    }
-
-                    g.drawImage(makeColorTransparent(this.diningarea, Color.black), 800, 290, this);
-                }
-
-                if (cameraLocation.equals("East Hall A")) {
-                    needToMove = true;
-                    if (Chicka.isInRoom() == 5 && Freddy.isInRoom() != 3 && Chicka.isInRoom() != 6) {
-                        g.drawImage(this.eastHallAChickaFar, cameraPosition - 200, 0, this);
-                    }
-
-                    if (Chicka.isInRoom() != 5 && Freddy.isInRoom() != 3 && Chicka.isInRoom() == 6) {
-                        g.drawImage(this.eastHallAChickaClose, cameraPosition - 200, 0, this);
-                    }
-
-                    if (Chicka.isInRoom() != 5 && Freddy.isInRoom() == 3 && Chicka.isInRoom() != 6) {
-                        g.drawImage(this.eastHallAFreddy, cameraPosition - 200, 0, this);
-                    }
-
-                    if (Chicka.isInRoom() != 5 && Freddy.isInRoom() != 3 && Chicka.isInRoom() != 6) {
-                        g.drawImage(this.eastHallANone, cameraPosition - 200, 0, this);
-                    }
-
-                    g.drawImage(makeColorTransparent(this.easthall, Color.black), 800, 290, this);
-                }
-
-                if (cameraLocation.equals("East Hall B")) {
-                    needToMove = true;
-                    if (Chicka.isInRoom() != 7 && Freddy.isInRoom() != 4) {
-                        g.drawImage(this.eastHallBNone, cameraPosition - 200, 0, this);
-                    }
-
-                    if (Chicka.isInRoom() == 7 && Freddy.isInRoom() != 4) {
-                        g.drawImage(this.eastHallBChicka, cameraPosition - 200, 0, this);
-                    }
-
-                    if (Chicka.isInRoom() != 7 && Freddy.isInRoom() == 4) {
-                        g.drawImage(this.eastHallBFreddy, cameraPosition - 200, 0, this);
-                    }
-
-                    g.drawImage(makeColorTransparent(this.ehallcorner, Color.black), 800, 290, this);
-                }
-
-                if (cameraLocation.equals("Backstage")) {
-                    needToMove = true;
-                    if (Bonnie.isInRoom() != 3 && Bonnie.isInRoom() != 4) {
-                        g.drawImage(this.backstageNone, cameraPosition - 200, 0, this);
-                    }
-
-                    if (Bonnie.isInRoom() == 3 && Bonnie.isInRoom() != 4) {
-                        g.drawImage(this.backstageFar, cameraPosition - 200, 0, this);
-                    }
-
-                    if (Bonnie.isInRoom() != 3 && Bonnie.isInRoom() == 4) {
-                        g.drawImage(this.backstageClose, cameraPosition - 200, 0, this);
-                    }
-
-                    g.drawImage(makeColorTransparent(this.backstage, Color.black), 800, 290, this);
-                }
-
-                if (cameraLocation.equals("Pirate Cove")) {
-                    needToMove = true;
-                    if (Foxy.getStage() == 0) {
-                        g.drawImage(this.piratecoveStage0, -100, 0, this);
-                    } else if (Foxy.getStage() == 1) {
-                        g.drawImage(this.piratecoveStage1, -100, 0, this);
-                    } else if (Foxy.getStage() == 2) {
-                        g.drawImage(this.piratecoveStage2, -100, 0, this);
-                    } else if (Foxy.getStage() == 3) {
-                        g.drawImage(this.piratecoveStage3, -100, 0, this);
-                    }
-
-                    g.drawImage(makeColorTransparent(this.piratecove, Color.black), 800, 290, this);
-                }
-
-                if (cameraLocation.equals("Restrooms")) {
-                    needToMove = true;
-                    if (Chicka.isInRoom() == 3 && Freddy.isInRoom() != 2 && Chicka.isInRoom() != 4) {
-                        g.drawImage(this.restroomsChickaFar, cameraPosition - 200, 0, this);
-                    }
-
-                    if (Chicka.isInRoom() != 3 && Freddy.isInRoom() != 2 && Chicka.isInRoom() == 4) {
-                        g.drawImage(this.restroomsChickaClose, cameraPosition - 200, 0, this);
-                    }
-
-                    if (Chicka.isInRoom() != 3 && Freddy.isInRoom() == 2 && Chicka.isInRoom() != 4) {
-                        g.drawImage(this.restroomsFreddy, cameraPosition - 200, 0, this);
-                    }
-
-                    if (Chicka.isInRoom() != 3 && Freddy.isInRoom() != 2 && Chicka.isInRoom() != 4) {
-                        g.drawImage(this.restroomsNone, cameraPosition - 200, 0, this);
-                    }
-
-                    g.drawImage(makeColorTransparent(this.restrooms, Color.black), 800, 290, this);
-                }
-
-                if (cameraLocation.equals("West Hall A") && Foxy.getStage() != 3) {
-                    needToMove = true;
-                    if (Bonnie.isInRoom() != 5) {
-                        g.drawImage(this.westHallANone, cameraPosition - 200, 0, this);
-                    }
-
-                    if (Bonnie.isInRoom() == 5) {
-                        g.drawImage(this.westHallABonnie, cameraPosition - 200, 0, this);
-                    }
-
-                    g.drawImage(makeColorTransparent(this.westhall, Color.black), 800, 290, this);
-                }
-
-                if (cameraLocation.equals("West Hall B")) {
-                    needToMove = true;
-                    if (Bonnie.isInRoom() != 7) {
-                        g.drawImage(this.westHallBNone, cameraPosition - 200, 0, this);
-                    }
-
-                    if (Bonnie.isInRoom() == 7) {
-                        g.drawImage(this.westHallBBonnie, cameraPosition - 200, 0, this);
-                    }
-
-                    g.drawImage(makeColorTransparent(this.whallcorner, Color.black), 800, 290, this);
-                }
-
-                if (cameraLocation.equals("Supply Closet")) {
-                    needToMove = true;
-                    if (Bonnie.isInRoom() != 6) {
-                        g.drawImage(this.supplyclosetNone, -100, 0, this);
-                    }
-
-                    if (Bonnie.isInRoom() == 6) {
-                        g.drawImage(this.supplyclosetBonnie, -100, 0, this);
-                    }
-
-                    g.drawImage(makeColorTransparent(this.supplycloset, Color.black), 800, 290, this);
-                }
-
-                if (cameraLocation.equals("West Hall A") && Foxy.getStage() == 3) {
-                    if (Foxy.getStage() == 3) {
-                        needToMove = false;
-                        if (Fox == 1) {
-                            g.drawImage(this.foxrun1, 0, 0, this);
-                            this.run.play();
-                        }
-
-                        if (Fox == 2) {
-                            g.drawImage(this.foxrun2, 0, 0, this);
-                        }
-
-                        if (Fox == 3) {
-                            g.drawImage(this.foxrun3, 0, 0, this);
-                        }
-
-                        if (Fox == 4) {
-                            g.drawImage(this.foxrun4, 0, 0, this);
-                        }
-
-                        if (Fox == 5) {
-                            g.drawImage(this.foxrun5, 0, 0, this);
-                        }
-
-                        if (Fox == 6) {
-                            g.drawImage(this.foxrun6, 0, 0, this);
-                        }
-
-                        if (Fox == 7) {
-                            g.drawImage(this.foxrun7, 0, 0, this);
-                        }
-
-                        if (Fox == 8) {
-                            g.drawImage(this.foxrun8, 0, 0, this);
-                        }
-
-                        if (Fox == 9) {
-                            g.drawImage(this.foxrun9, 0, 0, this);
-                        }
-
-                        if (Fox == 10) {
-                            g.drawImage(this.foxrun10, 0, 0, this);
-                        }
-
-                        if (Fox == 11) {
-                            g.drawImage(this.foxrun11, 0, 0, this);
-                        }
-
-                        if (Fox == 12) {
-                            g.drawImage(this.foxrun12, 0, 0, this);
-                        }
-
-                        if (Fox == 13) {
-                            g.drawImage(this.foxrun13, 0, 0, this);
-                        }
-
-                        if (Fox == 14) {
-                            g.drawImage(this.foxrun14, 0, 0, this);
-                        }
-
-                        if (Fox == 15) {
-                            g.drawImage(this.foxrun15, 0, 0, this);
-                        }
-
-                        if (Fox == 16) {
-                            g.drawImage(this.foxrun16, 0, 0, this);
-                        }
-
-                        if (Fox == 17) {
-                            g.drawImage(this.foxrun17, 0, 0, this);
-                        }
-
-                        if (Fox == 18) {
-                            g.drawImage(this.foxrun18, 0, 0, this);
-                        }
-
-                        if (Fox == 19) {
-                            g.drawImage(this.foxrun19, 0, 0, this);
-                        }
-
-                        if (Fox == 20) {
-                            g.drawImage(this.foxrun20, 0, 0, this);
-                        }
-
-                        if (Fox == 21) {
-                            g.drawImage(this.foxrun21, 0, 0, this);
-                        }
-
-                        if (Fox == 22) {
-                            g.drawImage(this.foxrun22, 0, 0, this);
-                        }
-
-                        if (Fox == 23) {
-                            g.drawImage(this.foxrun23, 0, 0, this);
-                        }
-
-                        if (Fox == 24) {
-                            g.drawImage(this.foxrun24, 0, 0, this);
-                        }
-
-                        if (Fox == 25) {
-                            g.drawImage(this.foxrun25, 0, 0, this);
-                        }
-
-                        if (Fox == 26) {
-                            g.drawImage(this.foxrun26, 0, 0, this);
-                        }
-
-                        if (Fox == 27) {
-                            g.drawImage(this.foxrun27, 0, 0, this);
-                        }
-
-                        if (Fox == 28) {
-                            g.drawImage(this.foxrun28, 0, 0, this);
-                        }
-
-                        if (Fox == 29) {
-                            g.drawImage(this.foxrun29, 0, 0, this);
-                        }
-
-                        if (Fox == 30) {
-                            g.drawImage(this.foxrun30, 0, 0, this);
-                        }
-
-                        if (Fox == 31) {
-                            g.drawImage(this.foxrun31, 0, 0, this);
-                        }
-                    }
-
-                    g.drawImage(makeColorTransparent(this.westhall, Color.black), 800, 290, this);
-                }
-
-                g.drawImage(makeColorTransparent(this.cameraMinimap, Color.black), 825, 325, this);
-                g.drawImage(this.blank, 923, 343, this);
-                g.drawImage(this.blank, 904, 399, this);
-                g.drawImage(this.blank, 877, 481, this);
-                g.drawImage(this.blank, 926, 596, this);
-                g.drawImage(this.blank, 926, 631, this);
-                g.drawImage(this.blank, 850, 578, this);
-                g.drawImage(this.blank, 1034, 596, this);
-                g.drawImage(this.blank, 1034, 631, this);
-                g.drawImage(this.blank, 796, 431, this);
-                g.drawImage(this.blank, 1146, 436, this);
-                g.drawImage(makeColorTransparent(this.A1, Color.black), 927, 347, this);
-                g.drawImage(makeColorTransparent(this.B1, Color.black), 908, 403, this);
-                g.drawImage(makeColorTransparent(this.C1, Color.black), 881, 485, this);
-                g.drawImage(makeColorTransparent(this.A2, Color.black), 930, 600, this);
-                g.drawImage(makeColorTransparent(this.B2, Color.black), 930, 635, this);
-                g.drawImage(makeColorTransparent(this.Three, Color.black), 855, 582, this);
-                g.drawImage(makeColorTransparent(this.A4, Color.black), 1038, 600, this);
-                g.drawImage(makeColorTransparent(this.B4, Color.black), 1038, 635, this);
-                g.drawImage(makeColorTransparent(this.Five, Color.black), 800, 435, this);
-                g.drawImage(makeColorTransparent(this.Six, Color.black), 1150, 440, this);
-            } else {
-                if (Bonnie.playerdeath && !Office.monitorUp) {
-                    needToMove = false;
-                    if (bonnie == 1) {
-                        scream.play();
-                        g.drawImage(this.bonnie1, 0, 0, this);
-                    }
-
-                    if (bonnie == 2) {
-                        g.drawImage(this.bonnie2, 0, 0, this);
-                    }
-
-                    if (bonnie == 3) {
-                        g.drawImage(this.bonnie3, 0, 0, this);
-                    }
-
-                    if (bonnie == 4) {
-                        g.drawImage(this.bonnie4, 0, 0, this);
-                    }
-
-                    if (bonnie == 5) {
-                        g.drawImage(this.bonnie5, 0, 0, this);
-                    }
-
-                    if (bonnie == 6) {
-                        g.drawImage(this.bonnie6, 0, 0, this);
-                    }
-
-                    if (bonnie == 7) {
-                        g.drawImage(this.bonnie7, 0, 0, this);
-                    }
-
-                    if (bonnie == 8) {
-                        g.drawImage(this.bonnie8, 0, 0, this);
-                    }
-
-                    if (bonnie == 9) {
-                        g.drawImage(this.bonnie9, 0, 0, this);
-                    }
-
-                    if (bonnie == 10) {
-                        g.drawImage(this.bonnie10, 0, 0, this);
-                    }
-
-                    if (bonnie == 11) {
-                        g.drawImage(this.bonnie11, 0, 0, this);
-                        scream.stop();
-                    }
-                } else if (Chicka.playerdeath && !Office.monitorUp) {
-                    needToMove = false;
-                    this.main1.stop();
-                    this.ambiance1.stop();
-                    if (chicka == 1) {
-                        g.drawImage(this.chicka1, 0, 0, this);
-                        scream.play();
-                    }
-
-                    if (chicka == 2) {
-                        g.drawImage(this.chicka2, 0, 0, this);
-                    }
-
-                    if (chicka == 3) {
-                        g.drawImage(this.chicka3, 0, 0, this);
-                    }
-
-                    if (chicka == 4) {
-                        g.drawImage(this.chicka4, 0, 0, this);
-                    }
-
-                    if (chicka == 5) {
-                        g.drawImage(this.chicka5, 0, 0, this);
-                    }
-
-                    if (chicka == 6) {
-                        g.drawImage(this.chicka6, 0, 0, this);
-                    }
-
-                    if (chicka == 7) {
-                        g.drawImage(this.chicka7, 0, 0, this);
-                    }
-
-                    if (chicka == 8) {
-                        g.drawImage(this.chicka8, 0, 0, this);
-                    }
-
-                    if (chicka == 9) {
-                        g.drawImage(this.chicka9, 0, 0, this);
-                    }
-
-                    if (chicka == 10) {
-                        g.drawImage(this.chicka10, 0, 0, this);
-                    }
-
-                    if (chicka == 11) {
-                        g.drawImage(this.chicka11, 0, 0, this);
-                    }
-
-                    if (chicka == 12) {
-                        g.drawImage(this.chicka12, 0, 0, this);
-                    }
-
-                    if (chicka == 13) {
-                        g.drawImage(this.chicka13, 0, 0, this);
-                    }
-
-                    if (chicka == 14) {
-                        g.drawImage(this.chicka14, 0, 0, this);
-                    }
-
-                    if (chicka == 15) {
-                        g.drawImage(this.chicka15, 0, 0, this);
-                    }
-
-                    if (chicka == 16) {
-                        g.drawImage(this.chicka16, 0, 0, this);
-                        scream.stop();
-                    }
-                } else if (Freddy.playerdeath && !Office.monitorUp) {
-                    needToMove = false;
-                    this.main1.stop();
-                    this.ambiance1.stop();
-                    if (freddie == 1) {
-                        g.drawImage(this.freddy1, 0, 0, this);
-                        scream.play();
-                    }
-
-                    if (freddie == 2) {
-                        g.drawImage(this.freddy2, 0, 0, this);
-                    }
-
-                    if (freddie == 3) {
-                        g.drawImage(this.freddy3, 0, 0, this);
-                    }
-
-                    if (freddie == 4) {
-                        g.drawImage(this.freddy4, 0, 0, this);
-                    }
-
-                    if (freddie == 5) {
-                        g.drawImage(this.freddy5, 0, 0, this);
-                    }
-
-                    if (freddie == 6) {
-                        g.drawImage(this.freddy6, 0, 0, this);
-                    }
-
-                    if (freddie == 7) {
-                        g.drawImage(this.freddy7, 0, 0, this);
-                    }
-
-                    if (freddie == 8) {
-                        g.drawImage(this.freddy8, 0, 0, this);
-                    }
-
-                    if (freddie == 9) {
-                        g.drawImage(this.freddy9, 0, 0, this);
-                    }
-
-                    if (freddie == 10) {
-                        g.drawImage(this.freddy10, 0, 0, this);
-                    }
-
-                    if (freddie == 11) {
-                        g.drawImage(this.freddy11, 0, 0, this);
-                    }
-
-                    if (freddie == 12) {
-                        g.drawImage(this.freddy12, 0, 0, this);
-                    }
-
-                    if (freddie == 13) {
-                        g.drawImage(this.freddy13, 0, 0, this);
-                    }
-
-                    if (freddie == 14) {
-                        g.drawImage(this.freddy14, 0, 0, this);
-                    }
-
-                    if (freddie == 15) {
-                        g.drawImage(this.freddy15, 0, 0, this);
-                    }
-
-                    if (freddie == 16) {
-                        g.drawImage(this.freddy16, 0, 0, this);
-                    }
-
-                    if (freddie == 17) {
-                        g.drawImage(this.freddy17, 0, 0, this);
-                    }
-
-                    if (freddie == 18) {
-                        g.drawImage(this.freddy18, 0, 0, this);
-                    }
-
-                    if (freddie == 19) {
-                        g.drawImage(this.freddy19, 0, 0, this);
-                    }
-
-                    if (freddie == 20) {
-                        g.drawImage(this.freddy20, 0, 0, this);
-                    }
-
-                    if (freddie == 21) {
-                        g.drawImage(this.freddy21, 0, 0, this);
-                    }
-
-                    if (freddie == 22) {
-                        g.drawImage(this.freddy22, 0, 0, this);
-                    }
-
-                    if (freddie == 23) {
-                        g.drawImage(this.freddy23, 0, 0, this);
-                    }
-
-                    if (freddie == 24) {
-                        g.drawImage(this.freddy24, 0, 0, this);
-                    }
-
-                    if (freddie == 25) {
-                        g.drawImage(this.freddy25, 0, 0, this);
-                    }
-
-                    if (freddie == 26) {
-                        g.drawImage(this.freddy26, 0, 0, this);
-                    }
-
-                    if (freddie == 27) {
-                        g.drawImage(this.freddy27, 0, 0, this);
-                    }
-
-                    if (freddie == 28) {
-                        g.drawImage(this.freddy28, 0, 0, this);
-                        scream.stop();
-                    }
-                } else if (Foxy.playerDeath && Office.door1open) {
-                    needToMove = false;
-                    this.main1.stop();
-                    this.ambiance1.stop();
-                    if (foxdie == 1) {
-                        scream.play();
-                        g.drawImage(this.foxy1, 0, 0, this);
-                    }
-
-                    if (foxdie == 2) {
-                        g.drawImage(this.foxy2, 0, 0, this);
-                    }
-
-                    if (foxdie == 3) {
-                        g.drawImage(this.foxy3, 0, 0, this);
-                    }
-
-                    if (foxdie == 4) {
-                        g.drawImage(this.foxy4, 0, 0, this);
-                    }
-
-                    if (foxdie == 5) {
-                        g.drawImage(this.foxy5, 0, 0, this);
-                    }
-
-                    if (foxdie == 6) {
-                        g.drawImage(this.foxy6, 0, 0, this);
-                    }
-
-                    if (foxdie == 7) {
-                        g.drawImage(this.foxy7, 0, 0, this);
-                    }
-
-                    if (foxdie == 8) {
-                        g.drawImage(this.foxy8, 0, 0, this);
-                    }
-
-                    if (foxdie == 9) {
-                        g.drawImage(this.foxy9, 0, 0, this);
-                    }
-
-                    if (foxdie == 10) {
-                        g.drawImage(this.foxy10, 0, 0, this);
-                    }
-
-                    if (foxdie == 11) {
-                        g.drawImage(this.foxy11, 0, 0, this);
-                    }
-
-                    if (foxdie == 12) {
-                        g.drawImage(this.foxy12, 0, 0, this);
-                    }
-
-                    if (foxdie == 13) {
-                        g.drawImage(this.foxy13, 0, 0, this);
-                    }
-
-                    if (foxdie == 14) {
-                        g.drawImage(this.foxy14, 0, 0, this);
-                    }
-
-                    if (foxdie == 15) {
-                        g.drawImage(this.foxy15, 0, 0, this);
-                    }
-
-                    if (foxdie == 16) {
-                        g.drawImage(this.foxy16, 0, 0, this);
-                    }
-
-                    if (foxdie == 17) {
-                        g.drawImage(this.foxy17, 0, 0, this);
-                    }
-
-                    if (foxdie == 18) {
-                        g.drawImage(this.foxy18, 0, 0, this);
-                    }
-
-                    if (foxdie == 19) {
-                        g.drawImage(this.foxy19, 0, 0, this);
-                        scream.stop();
-                    }
-                } else if (Office.light1on && Bonnie.isInRoom() == 8) {
-                    g.drawImage(this.officeBonnie, officeView, 0, this);
-                    g.drawImage(makeColorTransparent(this.leftLight, Color.black), officeView, 250, this);
-                    g.drawImage(makeColorTransparent(this.rightNone, Color.black), officeView + 1490, 250, this);
-                } else if (Office.light1on && Bonnie.isInRoom() != 8) {
-                    g.drawImage(this.officeLeftLight, officeView, 0, this);
-                    g.drawImage(makeColorTransparent(this.leftLight, Color.black), officeView, 250, this);
-                    g.drawImage(makeColorTransparent(this.rightNone, Color.black), officeView + 1490, 250, this);
-                } else if (Office.light2on && Chicka.isInRoom() == 8) {
-                    g.drawImage(this.officeChicka, officeView, 0, this);
-                    g.drawImage(makeColorTransparent(this.leftNone, Color.black), officeView, 250, this);
-                    g.drawImage(makeColorTransparent(this.rightLight, Color.black), officeView + 1490, 250, this);
-                } else if (Office.light2on && Chicka.isInRoom() != 8) {
-                    g.drawImage(this.officeRightLight, officeView, 0, this);
-                    g.drawImage(makeColorTransparent(this.leftNone, Color.black), officeView, 250, this);
-                    g.drawImage(makeColorTransparent(this.rightLight, Color.black), officeView + 1490, 250, this);
-                } else {
-                    g.drawImage(this.office, officeView, 0, this);
-                    g.drawImage(makeColorTransparent(this.leftNone, Color.black), officeView, 250, this);
-                    g.drawImage(makeColorTransparent(this.rightNone, Color.black), officeView + 1490, 250, this);
-                }
-
-                if (!Office.door1open) {
-                    g.drawImage(makeColorTransparent(this.leftdoor13, Color.white), officeView + 80, 0, this);
-                }
-
-                if (!Office.door2open) {
-                    g.drawImage(makeColorTransparent(this.rightdoor13, Color.white), officeView + 1270, 0, this);
-                }
-            }
-
-            if (needStatic) {
-                if (Static == 1) {
-                    g.drawImage(this.static1, 0, 0, this);
-                }
-
-                if (Static == 2) {
-                    g.drawImage(this.static2, 0, 0, this);
-                }
-
-                if (Static == 3) {
-                    g.drawImage(this.static3, 0, 0, this);
-                }
-
-                if (Static == 4) {
-                    g.drawImage(this.static4, 0, 0, this);
-                }
-
-                if (Static == 5) {
-                    g.drawImage(this.static5, 0, 0, this);
-                }
-
-                if (Static == 6) {
-                    g.drawImage(this.static6, 0, 0, this);
-                }
-
-                if (Static == 7) {
-                    g.drawImage(this.static7, 0, 0, this);
-                }
-
-                if (Static == 8) {
-                    g.drawImage(this.static8, 0, 0, this);
-                }
-            }
-
-            if (Office.getPower() <= 0.0) {
+                ambiance2.stop();
+                ambiance1.stop();
                 needToMove = false;
-                if (powerOut == 1) {
-                    g.drawImage(this.powerout1, 0, 0, this);
+                int random;
+                random = (int) (Math.random() * 20);
+                if (random > 18) {
+                    random = (int) (Math.random() * 2);
+                    switch (random) {
+                        case 1:
+                            g.drawImage(mainMenu2, 0, 0, this);
+                            break;
+                        case 2:
+                            g.drawImage(mainMenu3, 0, 0, this);
+                            break;
+                    }
+                } else {
+                    g.drawImage(mainMenu, 0, 0, this);
                 }
-
-                if (powerOut == 2) {
-                    g.drawImage(this.powerout2, 0, 0, this);
+                g.drawImage(fiveNightsLogo, 100, 50, this);
+                g.drawImage(newGameLogo, 100, 400, this);
+                g.drawImage(arrows, 30, 405, this);
+                g.drawImage(name, 1050, 700, this);
+                if (startClicked == true) {
+                    g.drawImage(newspaper, 0, 0, this);
                 }
-
-                if (powerOut == 3) {
-                    g.drawImage(this.powerout3, 0, 0, this);
+            } else {
+                main1.stop();
+                ambiance1.stop();
+                mainmenumusicplaying = false;
+                if(gamemusicplaying == false) {
+                    ambiance2.play();
+                    ambiance1.play();
+                    gamemusicplaying = true;
                 }
+                if (Office.monitorUp == true) {
+                    if (cameraLocation.equals("Show Stage")) {
+                        needToMove = true;
 
-                if (powerOut == 4) {
-                    g.drawImage(this.powerout4, 0, 0, this);
+                        if (Bonnie.isInRoom() != 0 && Chicka.isInRoom() != 0
+                                && Freddy.isInRoom() != 0) {
+                            g.drawImage(stageNone, cameraPosition - 200, 0,
+                                    this);
+                        }
+                        if (Bonnie.isInRoom() == 0 && Chicka.isInRoom() == 0
+                                && Freddy.isInRoom() == 0) {
+                            g.drawImage(stage, cameraPosition - 200, 0, this);
+                        }
+                        if (Bonnie.isInRoom() != 0 && Chicka.isInRoom() == 0
+                                && Freddy.isInRoom() == 0) {
+                            g.drawImage(stageNoBonnie, cameraPosition - 200, 0,
+                                    this);
+                        }
+                        if (Bonnie.isInRoom() == 0 && Chicka.isInRoom() != 0
+                                && Freddy.isInRoom() == 0) {
+                            g.drawImage(stageNoChicka, cameraPosition - 200, 0,
+                                    this);
+                        }
+                        if (Bonnie.isInRoom() != 0 && Chicka.isInRoom() != 0
+                                && Freddy.isInRoom() == 0) {
+                            g.drawImage(stageNoBonnieChicka,
+                                    cameraPosition - 200, 0, this);
+                        }
+                        g.drawImage(
+                                makeColorTransparent(showstage, Color.black),
+                                800, 290, this);
+                    }
+                    if (cameraLocation.equals("Dining Area")) {
+                        needToMove = true;
+
+                        if (Bonnie.isInRoom() != 1 && Chicka.isInRoom() != 1
+                                && Freddy.isInRoom() != 1
+                                && Bonnie.isInRoom() != 2
+                                && Chicka.isInRoom() != 2) {
+                            g.drawImage(diningNone, cameraPosition - 200, 0,
+                                    this);
+                        }
+                        if (Bonnie.isInRoom() == 1 && Chicka.isInRoom() != 1
+                                && Freddy.isInRoom() != 1
+                                && Bonnie.isInRoom() != 2
+                                && Chicka.isInRoom() != 2) {
+                            g.drawImage(diningBonnieFar, cameraPosition - 200,
+                                    0, this);
+                        }
+                        if (Bonnie.isInRoom() != 1 && Chicka.isInRoom() != 1
+                                && Freddy.isInRoom() != 1
+                                && Bonnie.isInRoom() != 1
+                                && Chicka.isInRoom() == 2) {
+                            g.drawImage(diningChickaClose,
+                                    cameraPosition - 200, 0, this);
+                        }
+                        if (Bonnie.isInRoom() != 1 && Chicka.isInRoom() == 1
+                                && Freddy.isInRoom() != 1
+                                && Bonnie.isInRoom() != 2
+                                && Chicka.isInRoom() != 2) {
+                            g.drawImage(diningChickaFar, cameraPosition - 200,
+                                    0, this);
+                        }
+                        if (Bonnie.isInRoom() != 1 && Chicka.isInRoom() != 1
+                                && Freddy.isInRoom() != 1
+                                && Bonnie.isInRoom() == 2
+                                && Chicka.isInRoom() != 2) {
+                            g.drawImage(diningChickaClose,
+                                    cameraPosition - 200, 0, this);
+                        }
+                        if (Bonnie.isInRoom() != 1 && Chicka.isInRoom() != 1
+                                && Freddy.isInRoom() == 1
+                                && Bonnie.isInRoom() != 2
+                                && Chicka.isInRoom() != 2) {
+                            g.drawImage(diningFreddy, cameraPosition - 200, 0,
+                                    this);
+                        }
+                        g.drawImage(
+                                makeColorTransparent(diningarea, Color.black),
+                                800, 290, this);
+                    }
+                    if (cameraLocation.equals("East Hall A")) {
+                        needToMove = true;
+
+                        if (Chicka.isInRoom() == 5 && Freddy.isInRoom() != 3
+                                && Chicka.isInRoom() != 6) {
+                            g.drawImage(eastHallAChickaFar,
+                                    cameraPosition - 200, 0, this);
+                        }
+                        if (Chicka.isInRoom() != 5 && Freddy.isInRoom() != 3
+                                && Chicka.isInRoom() == 6) {
+                            g.drawImage(eastHallAChickaClose,
+                                    cameraPosition - 200, 0, this);
+                        }
+                        if (Chicka.isInRoom() != 5 && Freddy.isInRoom() == 3
+                                && Chicka.isInRoom() != 6) {
+                            g.drawImage(eastHallAFreddy, cameraPosition - 200,
+                                    0, this);
+                        }
+                        if (Chicka.isInRoom() != 5 && Freddy.isInRoom() != 3
+                                && Chicka.isInRoom() != 6) {
+                            g.drawImage(eastHallANone, cameraPosition - 200, 0,
+                                    this);
+                        }
+                        g.drawImage(
+                                makeColorTransparent(easthall, Color.black),
+                                800, 290, this);
+                    }
+                    if (cameraLocation.equals("East Hall B")) {
+                        needToMove = true;
+
+                        if (Chicka.isInRoom() != 7 && Freddy.isInRoom() != 4) {
+                            g.drawImage(eastHallBNone, cameraPosition - 200, 0,
+                                    this);
+                        }
+                        if (Chicka.isInRoom() == 7 && Freddy.isInRoom() != 4) {
+                            g.drawImage(eastHallBChicka, cameraPosition - 200,
+                                    0, this);
+                        }
+                        if (Chicka.isInRoom() != 7 && Freddy.isInRoom() == 4) {
+                            g.drawImage(eastHallBFreddy, cameraPosition - 200,
+                                    0, this);
+                        }
+                        g.drawImage(
+                                makeColorTransparent(ehallcorner, Color.black),
+                                800, 290, this);
+                    }
+                    if (cameraLocation.equals("Backstage")) {
+                        needToMove = true;
+
+                        if (Bonnie.isInRoom() != 3 && Bonnie.isInRoom() != 4) {
+                            g.drawImage(backstageNone, cameraPosition - 200, 0,
+                                    this);
+                        }
+                        if (Bonnie.isInRoom() == 3 && Bonnie.isInRoom() != 4) {
+                            g.drawImage(backstageFar, cameraPosition - 200, 0,
+                                    this);
+                        }
+                        if (Bonnie.isInRoom() != 3 && Bonnie.isInRoom() == 4) {
+                            g.drawImage(backstageClose, cameraPosition - 200,
+                                    0, this);
+                        }
+                        g.drawImage(
+                                makeColorTransparent(backstage, Color.black),
+                                800, 290, this);
+                    }
+                    if (cameraLocation.equals("Pirate Cove")) {
+                        needToMove = true;
+
+                        if (Foxy.getStage() == 0) {
+                            g.drawImage(piratecoveStage0, -100, 0, this);
+                        } else if (Foxy.getStage() == 1) {
+                            g.drawImage(piratecoveStage1, -100, 0, this);
+                        } else if (Foxy.getStage() == 2) {
+                            g.drawImage(piratecoveStage2, -100, 0, this);
+                        } else if (Foxy.getStage() == 3) {
+                            g.drawImage(piratecoveStage3, -100, 0, this);
+                        }
+                        g.drawImage(
+                                makeColorTransparent(piratecove, Color.black),
+                                800, 290, this);
+                    }
+                    if (cameraLocation.equals("Restrooms")) {
+                        needToMove = true;
+
+                        if (Chicka.isInRoom() == 3 && Freddy.isInRoom() != 2
+                                && Chicka.isInRoom() != 4) {
+                            g.drawImage(restroomsChickaFar,
+                                    cameraPosition - 200, 0, this);
+                        }
+                        if (Chicka.isInRoom() != 3 && Freddy.isInRoom() != 2
+                                && Chicka.isInRoom() == 4) {
+                            g.drawImage(restroomsChickaClose,
+                                    cameraPosition - 200, 0, this);
+                        }
+                        if (Chicka.isInRoom() != 3 && Freddy.isInRoom() == 2
+                                && Chicka.isInRoom() != 4) {
+                            g.drawImage(restroomsFreddy, cameraPosition - 200,
+                                    0, this);
+                        }
+                        if (Chicka.isInRoom() != 3 && Freddy.isInRoom() != 2
+                                && Chicka.isInRoom() != 4) {
+                            g.drawImage(restroomsNone, cameraPosition - 200, 0,
+                                    this);
+                        }
+                        g.drawImage(
+                                makeColorTransparent(restrooms, Color.black),
+                                800, 290, this);
+                    }
+                    if (cameraLocation.equals("West Hall A")
+                            && Foxy.getStage() != 3) {
+                        needToMove = true;
+
+                        if (Bonnie.isInRoom() != 5) {
+                            g.drawImage(westHallANone, cameraPosition - 200, 0,
+                                    this);
+                        }
+                        if (Bonnie.isInRoom() == 5) {
+                            g.drawImage(westHallABonnie, cameraPosition - 200,
+                                    0, this);
+                        }
+                        g.drawImage(
+                                makeColorTransparent(westhall, Color.black),
+                                800, 290, this);
+                    }
+                    if (cameraLocation.equals("West Hall B")) {
+                        needToMove = true;
+
+                        if (Bonnie.isInRoom() != 7) {
+                            g.drawImage(westHallBNone, cameraPosition - 200, 0,
+                                    this);
+                        }
+                        if (Bonnie.isInRoom() == 7) {
+                            g.drawImage(westHallBBonnie, cameraPosition - 200,
+                                    0, this);
+                        }
+                        g.drawImage(
+                                makeColorTransparent(whallcorner, Color.black),
+                                800, 290, this);
+                    }
+                    if (cameraLocation.equals("Supply Closet")) {
+                        needToMove = true;
+
+                        if (Bonnie.isInRoom() != 6) {
+                            g.drawImage(supplyclosetNone, -100, 0, this);
+                        }
+                        if (Bonnie.isInRoom() == 6) {
+                            g.drawImage(supplyclosetBonnie, -100, 0, this);
+                        }
+                        g.drawImage(
+                                makeColorTransparent(supplycloset, Color.black),
+                                800, 290, this);
+                    }
+                    if (cameraLocation.equals("West Hall A")
+                            && Foxy.getStage() == 3) {
+
+                        if (Foxy.getStage() == 3) {
+                            needToMove = false;
+                            if (Fox == 1) {
+                                g.drawImage(foxrun1, 0, 0, this);
+                                run.play();
+                            }
+                            if (Fox == 2)
+                                g.drawImage(foxrun2, 0, 0, this);
+                            if (Fox == 3)
+                                g.drawImage(foxrun3, 0, 0, this);
+                            if (Fox == 4)
+                                g.drawImage(foxrun4, 0, 0, this);
+                            if (Fox == 5)
+                                g.drawImage(foxrun5, 0, 0, this);
+                            if (Fox == 6)
+                                g.drawImage(foxrun6, 0, 0, this);
+                            if (Fox == 7)
+                                g.drawImage(foxrun7, 0, 0, this);
+                            if (Fox == 8)
+                                g.drawImage(foxrun8, 0, 0, this);
+                            if (Fox == 9)
+                                g.drawImage(foxrun9, 0, 0, this);
+                            if (Fox == 10)
+                                g.drawImage(foxrun10, 0, 0, this);
+                            if (Fox == 11)
+                                g.drawImage(foxrun11, 0, 0, this);
+                            if (Fox == 12)
+                                g.drawImage(foxrun12, 0, 0, this);
+                            if (Fox == 13)
+                                g.drawImage(foxrun13, 0, 0, this);
+                            if (Fox == 14)
+                                g.drawImage(foxrun14, 0, 0, this);
+                            if (Fox == 15)
+                                g.drawImage(foxrun15, 0, 0, this);
+                            if (Fox == 16)
+                                g.drawImage(foxrun16, 0, 0, this);
+                            if (Fox == 17)
+                                g.drawImage(foxrun17, 0, 0, this);
+                            if (Fox == 18)
+                                g.drawImage(foxrun18, 0, 0, this);
+                            if (Fox == 19)
+                                g.drawImage(foxrun19, 0, 0, this);
+                            if (Fox == 20)
+                                g.drawImage(foxrun20, 0, 0, this);
+                            if (Fox == 21)
+                                g.drawImage(foxrun21, 0, 0, this);
+                            if (Fox == 22)
+                                g.drawImage(foxrun22, 0, 0, this);
+                            if (Fox == 23)
+                                g.drawImage(foxrun23, 0, 0, this);
+                            if (Fox == 24)
+                                g.drawImage(foxrun24, 0, 0, this);
+                            if (Fox == 25)
+                                g.drawImage(foxrun25, 0, 0, this);
+                            if (Fox == 26)
+                                g.drawImage(foxrun26, 0, 0, this);
+                            if (Fox == 27)
+                                g.drawImage(foxrun27, 0, 0, this);
+                            if (Fox == 28)
+                                g.drawImage(foxrun28, 0, 0, this);
+                            if (Fox == 29)
+                                g.drawImage(foxrun29, 0, 0, this);
+                            if (Fox == 30)
+                                g.drawImage(foxrun30, 0, 0, this);
+                            if (Fox == 31)
+                                g.drawImage(foxrun31, 0, 0, this);
+
+                        }
+                        g.drawImage(
+                                makeColorTransparent(westhall, Color.black),
+                                800, 290, this);
+                    }
+                    g.drawImage(
+                            makeColorTransparent(cameraMinimap, Color.black),
+                            825, 325, this);
+                    g.drawImage(blank, 923, 343, this);
+                    g.drawImage(blank, 904, 399, this);
+                    g.drawImage(blank, 877, 481, this);
+                    g.drawImage(blank, 926, 596, this);
+                    g.drawImage(blank, 926, 631, this);
+                    g.drawImage(blank, 850, 578, this);
+                    g.drawImage(blank, 1034, 596, this);
+                    g.drawImage(blank, 1034, 631, this);
+                    g.drawImage(blank, 796, 431, this);
+                    g.drawImage(blank, 1146, 436, this);
+                    g.drawImage(makeColorTransparent(A1, Color.black), 927,
+                            347, this);
+                    g.drawImage(makeColorTransparent(B1, Color.black), 908,
+                            403, this);
+                    g.drawImage(makeColorTransparent(C1, Color.black), 881,
+                            485, this);
+                    g.drawImage(makeColorTransparent(A2, Color.black), 930,
+                            600, this);
+                    g.drawImage(makeColorTransparent(B2, Color.black), 930,
+                            635, this);
+                    g.drawImage(makeColorTransparent(Three, Color.black), 855,
+                            582, this);
+                    g.drawImage(makeColorTransparent(A4, Color.black), 1038,
+                            600, this);
+                    g.drawImage(makeColorTransparent(B4, Color.black), 1038,
+                            635, this);
+                    g.drawImage(makeColorTransparent(Five, Color.black), 800,
+                            435, this);
+                    g.drawImage(makeColorTransparent(Six, Color.black), 1150,
+                            440, this);
+                } else {
+                    if (Bonnie.playerdeath == true && Office.monitorUp == false) {
+                        needToMove = false;
+                        if (bonnie == 1) {
+                            scream.play();
+                            g.drawImage(bonnie1, 0, 0, this);
+                        }
+                        if (bonnie == 2)
+                            g.drawImage(bonnie2, 0, 0, this);
+                        if (bonnie == 3)
+                            g.drawImage(bonnie3, 0, 0, this);
+                        if (bonnie == 4)
+                            g.drawImage(bonnie4, 0, 0, this);
+                        if (bonnie == 5)
+                            g.drawImage(bonnie5, 0, 0, this);
+                        if (bonnie == 6)
+                            g.drawImage(bonnie6, 0, 0, this);
+                        if (bonnie == 7)
+                            g.drawImage(bonnie7, 0, 0, this);
+                        if (bonnie == 8)
+                            g.drawImage(bonnie8, 0, 0, this);
+                        if (bonnie == 9)
+                            g.drawImage(bonnie9, 0, 0, this);
+                        if (bonnie == 10)
+                            g.drawImage(bonnie10, 0, 0, this);
+                        if (bonnie == 11) {
+                            g.drawImage(bonnie11, 0, 0, this);
+                            scream.stop();
+                        }
+
+
+
+                    } else if (Chicka.playerdeath == true && Office.monitorUp == false) {
+                        needToMove = false;
+                        main1.stop();
+                        ambiance1.stop();
+                        if (chicka == 1) {
+                            g.drawImage(chicka1, 0, 0, this);
+                            scream.play();
+                        }
+                        if (chicka == 2)
+                            g.drawImage(chicka2, 0, 0, this);
+                        if (chicka == 3)
+                            g.drawImage(chicka3, 0, 0, this);
+                        if (chicka == 4)
+                            g.drawImage(chicka4, 0, 0, this);
+                        if (chicka == 5)
+                            g.drawImage(chicka5, 0, 0, this);
+                        if (chicka == 6)
+                            g.drawImage(chicka6, 0, 0, this);
+                        if (chicka == 7)
+                            g.drawImage(chicka7, 0, 0, this);
+                        if (chicka == 8)
+                            g.drawImage(chicka8, 0, 0, this);
+                        if (chicka == 9)
+                            g.drawImage(chicka9, 0, 0, this);
+                        if (chicka == 10)
+                            g.drawImage(chicka10, 0, 0, this);
+                        if (chicka == 11)
+                            g.drawImage(chicka11, 0, 0, this);
+                        if (chicka == 12)
+                            g.drawImage(chicka12, 0, 0, this);
+                        if (chicka == 13)
+                            g.drawImage(chicka13, 0, 0, this);
+                        if (chicka == 14)
+                            g.drawImage(chicka14, 0, 0, this);
+                        if (chicka == 15)
+                            g.drawImage(chicka15, 0, 0, this);
+                        if (chicka == 16) {
+                            g.drawImage(chicka16, 0, 0, this);
+                            scream.stop();
+                        }
+
+                    } else if (Freddy.playerdeath == true && Office.monitorUp == false) {
+                        needToMove = false;
+                        main1.stop();
+                        ambiance1.stop();
+                        if (freddie == 1) {
+                            g.drawImage(freddy1, 0, 0, this);
+                            scream.play();
+                        }
+                        if (freddie == 2)
+                            g.drawImage(freddy2, 0, 0, this);
+                        if (freddie == 3)
+                            g.drawImage(freddy3, 0, 0, this);
+                        if (freddie == 4)
+                            g.drawImage(freddy4, 0, 0, this);
+                        if (freddie == 5)
+                            g.drawImage(freddy5, 0, 0, this);
+                        if (freddie == 6)
+                            g.drawImage(freddy6, 0, 0, this);
+                        if (freddie == 7)
+                            g.drawImage(freddy7, 0, 0, this);
+                        if (freddie == 8)
+                            g.drawImage(freddy8, 0, 0, this);
+                        if (freddie == 9)
+                            g.drawImage(freddy9, 0, 0, this);
+                        if (freddie == 10)
+                            g.drawImage(freddy10, 0, 0, this);
+                        if (freddie == 11)
+                            g.drawImage(freddy11, 0, 0, this);
+                        if (freddie == 12)
+                            g.drawImage(freddy12, 0, 0, this);
+                        if (freddie == 13)
+                            g.drawImage(freddy13, 0, 0, this);
+                        if (freddie == 14)
+                            g.drawImage(freddy14, 0, 0, this);
+                        if (freddie == 15)
+                            g.drawImage(freddy15, 0, 0, this);
+                        if (freddie == 16)
+                            g.drawImage(freddy16, 0, 0, this);
+                        if (freddie == 17)
+                            g.drawImage(freddy17, 0, 0, this);
+                        if (freddie == 18)
+                            g.drawImage(freddy18, 0, 0, this);
+                        if (freddie == 19)
+                            g.drawImage(freddy19, 0, 0, this);
+                        if (freddie == 20)
+                            g.drawImage(freddy20, 0, 0, this);
+                        if (freddie == 21)
+                            g.drawImage(freddy21, 0, 0, this);
+                        if (freddie == 22)
+                            g.drawImage(freddy22, 0, 0, this);
+                        if (freddie == 23)
+                            g.drawImage(freddy23, 0, 0, this);
+                        if (freddie == 24)
+                            g.drawImage(freddy24, 0, 0, this);
+                        if (freddie == 25)
+                            g.drawImage(freddy25, 0, 0, this);
+                        if (freddie == 26)
+                            g.drawImage(freddy26, 0, 0, this);
+                        if (freddie == 27)
+                            g.drawImage(freddy27, 0, 0, this);
+                        if (freddie == 28) {
+                            g.drawImage(freddy28, 0, 0, this);
+                            scream.stop();
+                        }
+
+                    } else if (Foxy.playerdeath == true
+                            && Office.door1open == true) {
+                        needToMove = false;
+                        main1.stop();
+                        ambiance1.stop();
+                        if (foxdie == 1) {
+                            scream.play();
+                            g.drawImage(foxy1, 0, 0, this);
+                        }
+                        if (foxdie == 2)
+                            g.drawImage(foxy2, 0, 0, this);
+                        if (foxdie == 3)
+                            g.drawImage(foxy3, 0, 0, this);
+                        if (foxdie == 4)
+                            g.drawImage(foxy4, 0, 0, this);
+                        if (foxdie == 5)
+                            g.drawImage(foxy5, 0, 0, this);
+                        if (foxdie == 6)
+                            g.drawImage(foxy6, 0, 0, this);
+                        if (foxdie == 7)
+                            g.drawImage(foxy7, 0, 0, this);
+                        if (foxdie == 8)
+                            g.drawImage(foxy8, 0, 0, this);
+                        if (foxdie == 9)
+                            g.drawImage(foxy9, 0, 0, this);
+                        if (foxdie == 10)
+                            g.drawImage(foxy10, 0, 0, this);
+                        if (foxdie == 11)
+                            g.drawImage(foxy11, 0, 0, this);
+                        if (foxdie == 12)
+                            g.drawImage(foxy12, 0, 0, this);
+                        if (foxdie == 13)
+                            g.drawImage(foxy13, 0, 0, this);
+                        if (foxdie == 14)
+                            g.drawImage(foxy14, 0, 0, this);
+                        if (foxdie == 15)
+                            g.drawImage(foxy15, 0, 0, this);
+                        if (foxdie == 16)
+                            g.drawImage(foxy16, 0, 0, this);
+                        if (foxdie == 17)
+                            g.drawImage(foxy17, 0, 0, this);
+                        if (foxdie == 18)
+                            g.drawImage(foxy18, 0, 0, this);
+                        if (foxdie == 19) {
+                            g.drawImage(foxy19, 0, 0, this);
+                            scream.stop();
+                        }
+
+                    } else if (Office.light1on == true
+                            && Bonnie.isInRoom() == 8) {
+                        g.drawImage(officeBonnie, officeView, 0, this);
+                        g.drawImage(
+                                makeColorTransparent(leftLight, Color.black),
+                                officeView, 250, this);
+                        g.drawImage(
+                                makeColorTransparent(rightNone, Color.black),
+                                officeView + 1490, 250, this);
+                    } else if (Office.light1on == true
+                            && Bonnie.isInRoom() != 8) {
+                        g.drawImage(officeLeftLight, officeView, 0, this);
+                        g.drawImage(
+                                makeColorTransparent(leftLight, Color.black),
+                                officeView, 250, this);
+                        g.drawImage(
+                                makeColorTransparent(rightNone, Color.black),
+                                officeView + 1490, 250, this);
+                    } else if (Office.light2on == true
+                            && Chicka.isInRoom() == 8) {
+                        g.drawImage(officeChicka, officeView, 0, this);
+                        g.drawImage(
+                                makeColorTransparent(leftNone, Color.black),
+                                officeView, 250, this);
+                        g.drawImage(
+                                makeColorTransparent(rightLight, Color.black),
+                                officeView + 1490, 250, this);
+                    } else if (Office.light2on == true
+                            && Chicka.isInRoom() != 8) {
+                        g.drawImage(officeRightLight, officeView, 0, this);
+                        g.drawImage(
+                                makeColorTransparent(leftNone, Color.black),
+                                officeView, 250, this);
+                        g.drawImage(
+                                makeColorTransparent(rightLight, Color.black),
+                                officeView + 1490, 250, this);
+                    } else {
+                        g.drawImage(office, officeView, 0, this);
+                        g.drawImage(
+                                makeColorTransparent(leftNone, Color.black),
+                                officeView, 250, this);
+                        g.drawImage(
+                                makeColorTransparent(rightNone, Color.black),
+                                officeView + 1490, 250, this);
+                    }
+                    if (Office.door1open == false) {
+                        g.drawImage(makeColorTransparent(leftdoor13, Color.white), officeView + 80 , 0, this);
+                    }
+                    if (Office.door2open == false) {
+                        g.drawImage(makeColorTransparent(rightdoor13, Color.white), officeView + 1270, 0, this);
+                    }
                 }
-
-                if (powerOut == 5) {
-                    g.drawImage(this.powerout5, 0, 0, this);
+                if (needStatic == true) {
+                    if (Static == 1)
+                        g.drawImage(static1,
+                                0, 0, this);
+                    if (Static == 2)
+                        g.drawImage(static2,
+                                0, 0, this);
+                    if (Static == 3)
+                        g.drawImage(static3,
+                                0, 0, this);
+                    if (Static == 4)
+                        g.drawImage(static4,
+                                0, 0, this);
+                    if (Static == 5)
+                        g.drawImage(static5,
+                                0, 0, this);
+                    if (Static == 6)
+                        g.drawImage(static6,
+                                0, 0, this);
+                    if (Static == 7)
+                        g.drawImage(static7,
+                                0, 0, this);
+                    if (Static == 8)
+                        g.drawImage(static8,
+                                0, 0, this);
                 }
+                if (Office.getPower() <= 0) {
+                    needToMove = false;
+                    if (powerOut == 1)
+                        g.drawImage(powerout1, 0, 0, this);
+                    if (powerOut == 2)
+                        g.drawImage(powerout2, 0, 0, this);
+                    if (powerOut == 3)
+                        g.drawImage(powerout3, 0, 0, this);
+                    if (powerOut == 4)
+                        g.drawImage(powerout4, 0, 0, this);
+                    if (powerOut == 5)
+                        g.drawImage(powerout5, 0, 0, this);
+                    if (powerOut == 6)
+                        g.drawImage(powerout6, 0, 0, this);
+                    if (powerOut == 7)
+                        g.drawImage(powerout7, 0, 0, this);
+                    if (powerOut == 8)
+                        g.drawImage(powerout8, 0, 0, this);
+                    if (powerOut == 9)
+                        g.drawImage(powerout9, 0, 0, this);
+                    if (powerOut == 10)
+                        g.drawImage(powerout10, 0, 0, this);
+                    if (powerOut == 11)
+                        g.drawImage(powerout11, 0, 0, this);
+                    if (powerOut == 12)
+                        g.drawImage(powerout12, 0, 0, this);
+                    if (powerOut == 13)
+                        g.drawImage(powerout13, 0, 0, this);
+                    if (powerOut == 14)
+                        g.drawImage(powerout14, 0, 0, this);
+                    if (powerOut == 15)
+                        g.drawImage(powerout15, 0, 0, this);
+                    if (powerOut == 16)
+                        g.drawImage(powerout16, 0, 0, this);
+                    if (powerOut == 17)
+                        g.drawImage(powerout17, 0, 0, this);
+                    if (powerOut == 18)
+                        g.drawImage(powerout18, 0, 0, this);
+                    if (powerOut == 19)
+                        g.drawImage(powerout19, 0, 0, this);
+                    if (powerOut == 20)
+                        g.drawImage(powerout20, 0, 0, this);
+                    Main.death = true;
 
-                if (powerOut == 6) {
-                    g.drawImage(this.powerout6, 0, 0, this);
                 }
+                g.drawImage(
+                        makeColorTransparent(
+                                (makeColorTransparent(cameraBar, Color.black)),
+                                Color.GRAY), 262, 660, this);
+                if (Office.getUsage() == 0) {
 
-                if (powerOut == 7) {
-                    g.drawImage(this.powerout7, 0, 0, this);
                 }
-
-                if (powerOut == 8) {
-                    g.drawImage(this.powerout8, 0, 0, this);
+                if (Office.getUsage() == 1) {
+                    g.drawImage(makeColorTransparent(use1, Color.black), 90,
+                            672, this);
                 }
-
-                if (powerOut == 9) {
-                    g.drawImage(this.powerout9, 0, 0, this);
+                if (Office.getUsage() == 2) {
+                    g.drawImage(makeColorTransparent(use2, Color.black), 90,
+                            672, this);
                 }
-
-                if (powerOut == 10) {
-                    g.drawImage(this.powerout10, 0, 0, this);
+                if (Office.getUsage() == 3) {
+                    g.drawImage(makeColorTransparent(use3, Color.black), 90,
+                            672, this);
                 }
-
-                if (powerOut == 11) {
-                    g.drawImage(this.powerout11, 0, 0, this);
+                if (Office.getUsage() == 4) {
+                    g.drawImage(makeColorTransparent(use4, Color.black), 90,
+                            672, this);
                 }
-
-                if (powerOut == 12) {
-                    g.drawImage(this.powerout12, 0, 0, this);
+                if (Office.getUsage() == 5) {
+                    g.drawImage(makeColorTransparent(use5, Color.black), 90,
+                            672, this);
                 }
+                g.drawImage(makeColorTransparent(use, Color.black), 10, 680,
+                        this);
+                g.drawImage(makeColorTransparent(powerleft, Color.black), 10,
+                        650, this);
+                g.drawImage(makeColorTransparent(percentsign, Color.black),
+                        215, 650, this);
 
-                if (powerOut == 13) {
-                    g.drawImage(this.powerout13, 0, 0, this);
+                if (Office.powerRemaining <= 100 && Office.powerRemaining > 90) {
+                    g.drawImage(makeColorTransparent(onehundred, Color.black),
+                            157, 646, this);
                 }
-
-                if (powerOut == 14) {
-                    g.drawImage(this.powerout14, 0, 0, this);
+                if (Office.powerRemaining <= 90 && Office.powerRemaining > 80) {
+                    g.drawImage(makeColorTransparent(ninety, Color.black), 160,
+                            646, this);
                 }
-
-                if (powerOut == 15) {
-                    g.drawImage(this.powerout15, 0, 0, this);
+                if (Office.powerRemaining <= 80 && Office.powerRemaining > 70) {
+                    g.drawImage(makeColorTransparent(eighty, Color.black), 160,
+                            646, this);
                 }
-
-                if (powerOut == 16) {
-                    g.drawImage(this.powerout16, 0, 0, this);
+                if (Office.powerRemaining <= 70 && Office.powerRemaining > 60) {
+                    g.drawImage(makeColorTransparent(seventy, Color.black),
+                            160, 646, this);
                 }
-
-                if (powerOut == 17) {
-                    g.drawImage(this.powerout17, 0, 0, this);
+                if (Office.powerRemaining <= 60 && Office.powerRemaining > 50) {
+                    g.drawImage(makeColorTransparent(sixty, Color.black), 160,
+                            646, this);
                 }
-
-                if (powerOut == 18) {
-                    g.drawImage(this.powerout18, 0, 0, this);
+                if (Office.powerRemaining <= 50 && Office.powerRemaining > 40) {
+                    g.drawImage(makeColorTransparent(fifty, Color.black), 160,
+                            646, this);
                 }
-
-                if (powerOut == 19) {
-                    g.drawImage(this.powerout19, 0, 0, this);
+                if (Office.powerRemaining <= 40 && Office.powerRemaining > 30) {
+                    g.drawImage(makeColorTransparent(forty, Color.black), 160,
+                            646, this);
                 }
-
-                if (powerOut == 20) {
-                    g.drawImage(this.powerout20, 0, 0, this);
+                if (Office.powerRemaining <= 30 && Office.powerRemaining > 20) {
+                    g.drawImage(makeColorTransparent(thirty, Color.black), 160,
+                            646, this);
                 }
-
-                Main.death = true;
-            }
-
-            g.drawImage(makeColorTransparent(makeColorTransparent(this.cameraBar, Color.black), Color.GRAY), 262, 660, this);
-            Office.getUsage();
-            if (Office.getUsage() == 1) {
-                g.drawImage(makeColorTransparent(this.use1, Color.black), 90, 672, this);
-            }
-
-            if (Office.getUsage() == 2) {
-                g.drawImage(makeColorTransparent(this.use2, Color.black), 90, 672, this);
-            }
-
-            if (Office.getUsage() == 3) {
-                g.drawImage(makeColorTransparent(this.use3, Color.black), 90, 672, this);
-            }
-
-            if (Office.getUsage() == 4) {
-                g.drawImage(makeColorTransparent(this.use4, Color.black), 90, 672, this);
-            }
-
-            if (Office.getUsage() == 5) {
-                g.drawImage(makeColorTransparent(this.use5, Color.black), 90, 672, this);
-            }
-
-            g.drawImage(makeColorTransparent(this.use, Color.black), 10, 680, this);
-            g.drawImage(makeColorTransparent(this.powerleft, Color.black), 10, 650, this);
-            g.drawImage(makeColorTransparent(this.percentsign, Color.black), 215, 650, this);
-            if (Office.powerRemaining <= 100.0 && Office.powerRemaining > 90.0) {
-                g.drawImage(makeColorTransparent(this.onehundred, Color.black), 157, 646, this);
-            }
-
-            if (Office.powerRemaining <= 90.0 && Office.powerRemaining > 80.0) {
-                g.drawImage(makeColorTransparent(this.ninety, Color.black), 160, 646, this);
-            }
-
-            if (Office.powerRemaining <= 80.0 && Office.powerRemaining > 70.0) {
-                g.drawImage(makeColorTransparent(this.eighty, Color.black), 160, 646, this);
-            }
-
-            if (Office.powerRemaining <= 70.0 && Office.powerRemaining > 60.0) {
-                g.drawImage(makeColorTransparent(this.seventy, Color.black), 160, 646, this);
-            }
-
-            if (Office.powerRemaining <= 60.0 && Office.powerRemaining > 50.0) {
-                g.drawImage(makeColorTransparent(this.sixty, Color.black), 160, 646, this);
-            }
-
-            if (Office.powerRemaining <= 50.0 && Office.powerRemaining > 40.0) {
-                g.drawImage(makeColorTransparent(this.fifty, Color.black), 160, 646, this);
-            }
-
-            if (Office.powerRemaining <= 40.0 && Office.powerRemaining > 30.0) {
-                g.drawImage(makeColorTransparent(this.forty, Color.black), 160, 646, this);
-            }
-
-            if (Office.powerRemaining <= 30.0 && Office.powerRemaining > 20.0) {
-                g.drawImage(makeColorTransparent(this.thirty, Color.black), 160, 646, this);
-            }
-
-            if (Office.powerRemaining <= 20.0 && Office.powerRemaining > 10.0) {
-                g.drawImage(makeColorTransparent(this.twenty, Color.black), 160, 646, this);
-            }
-
-            if (Office.powerRemaining <= 10.0 && Office.powerRemaining > 0.0) {
-                g.drawImage(makeColorTransparent(this.ten, Color.black), 160, 646, this);
-            }
-
-            if (Office.powerRemaining == 0.0) {
-                g.drawImage(makeColorTransparent(this.zero, Color.black), 160, 646, this);
-            }
-
-            if (Main.deather) {
-                g.drawImage(this.lose, 0, 0, this);
-            }
-
-            if (Main.gameWin) {
-                g.drawImage(this.win, 0, 0, this);
+                if (Office.powerRemaining <= 20 && Office.powerRemaining > 10) {
+                    g.drawImage(makeColorTransparent(twenty, Color.black), 160,
+                            646, this);
+                }
+                if (Office.powerRemaining <= 10 && Office.powerRemaining > 0) {
+                    g.drawImage(makeColorTransparent(ten, Color.black), 160,
+                            646, this);
+                }
+                if (Office.powerRemaining == 0) {
+                    g.drawImage(makeColorTransparent(zero, Color.black), 160,
+                            646, this);
+                }
+                if (Main.deather == true) {
+                    g.drawImage(lose, 0, 0, this);
+                }
+                if (Main.gameWin == true) {
+                    g.drawImage(win, 0, 0, this);
+                }
             }
         }
-
-        this.repaint();
+        repaint();
     }
 
     public double height(double height) {
-        if (height > 720.0) {
-            height = 720.0;
+        if (height > 720) {
+            height = 720;
         }
-
         return height;
     }
 
     public double width(double width) {
-        if (width > 1280.0) {
-            width = 1280.0;
+        if (width > 1280) {
+            width = 1280;
         }
-
         return width;
     }
 
-    public static Image makeColorTransparent(Image image2, Color color) {
-        ImageFilter filter = new Window$1(color);
+    public static Image makeColorTransparent(java.awt.Image image2,
+                                             final Color color) {
+        ImageFilter filter = new RGBImageFilter() {
+            public int markerRGB = color.getRGB() | 0xFF000000;
+
+            public final int filterRGB(int x, int y, int rgb) {
+                if ((rgb | 0xFF000000) == markerRGB) {
+                    return 0x00FFFFFF & rgb;
+                } else {
+                    return rgb;
+                }
+            }
+        };
+
         ImageProducer ip = new FilteredImageSource(image2.getSource(), filter);
         return Toolkit.getDefaultToolkit().createImage(ip);
     }
-}
 
+}

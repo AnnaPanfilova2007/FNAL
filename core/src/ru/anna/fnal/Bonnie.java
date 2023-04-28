@@ -1,17 +1,18 @@
 package ru.anna.fnal;
 
 public class Bonnie {
-    static int inRoom = 0;
+    public static int inRoom = 0;
     private static int Difficulty;
     public static boolean playerdeath = false;
 
-    public void Bonnie1(int Diffuculty) {
+    public void Bonnie(int Diffuculty) {
         this.Difficulty = Difficulty;
     }
 
     public static int isInRoom() {
         return inRoom;
     }
+
     public static void tick() {
         if (inRoom == 8 && Office.door1open == true && Office.monitorUp == true) {
             inRoom = 9;
