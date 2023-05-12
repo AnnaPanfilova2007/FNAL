@@ -1,5 +1,5 @@
 package ru.anna.fnal;
-
+import ru.anna.fnal.Window;
 public class Foxy {
 
     private int Difficulty;
